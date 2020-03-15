@@ -50,7 +50,6 @@ public class Point3D {
 
     public Vector Subtract(Point3D sub)
     {
-
     }
 
 }
