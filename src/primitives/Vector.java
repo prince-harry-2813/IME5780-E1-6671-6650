@@ -63,7 +63,7 @@ public class Vector {
     }
 
     public Vector normalize() {
-        double divider = length(this);
+        double divider = length();
         this.head.x = new Coordinate(head.getX() / divider);
         this.head.y = new Coordinate(head.getY() / divider);
         this.head.z = new Coordinate(head.getZ() / divider);
