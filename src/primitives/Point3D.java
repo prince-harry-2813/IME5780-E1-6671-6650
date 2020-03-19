@@ -10,7 +10,7 @@ public class Point3D {
     Point3D ZERO = new Point3D(0,0,0);
     /**
      * ctor that gets three Coordinates
-     * @param
+     * @param x
      * @param y
      * @param z
      */
@@ -36,20 +36,35 @@ public class Point3D {
         this.z = other.z;
     }
 
-    public Coordinate getX() {
-        return x;
+    public double getX() {
+        return x.get();
     }
 
-    public Coordinate getY() {
-        return y;
+    public double getY() {
+        return y.get();
     }
 
-    public Coordinate getZ() {
-        return z;
+    public double getZ() {
+        return z.get();
     }
 
     public Vector Subtract(Point3D sub)
     {
+        return new Vector(sub.x.get()-this.x.get(),sub.y.get()-this.y.get(),sub.z.get()-this.z.get());
     }
-
+    public double distanceSquared (Point3D other)
+    {
+        Vector ourVector = this.Subtract(other);
+        double d = Math.sqrt((ourVector.head.getX()*ourVector.head.getX())+(ourVector.head.getY()*ourVector.head.getY())+(ourVector.head.getZ()*ourVector.head.getZ()));
+        return d*d;
+    }
+    public Point3D add (Vector vec)
+    {
+        return new Point3D(this.getX()+vec.head.getX(),this.getY()+vec.head.getY(),this.getZ()+vec.head.getZ());
+    }
+    public double distance(Point3D other)
+    {
+        double d = this.distanceSquared(other);
+        return Math.sqrt(d);
+    }
 }
