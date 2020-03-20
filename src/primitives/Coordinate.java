@@ -1,6 +1,7 @@
 package primitives;
 
-import static primitives.Util.*;
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * Class Coordinate is the basic class representing a coordinate for Cartesian
@@ -49,7 +50,7 @@ public final class Coordinate {
         if (this == obj) return true;
         if (obj == null) return false;
         if (!(obj instanceof Coordinate)) return false;
-        return isZero(_coord - ((Coordinate)obj)._coord);
+        return isZero(_coord - ((Coordinate) obj)._coord);
     }
 
     @Override

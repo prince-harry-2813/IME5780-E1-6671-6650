@@ -2,12 +2,13 @@ package primitives;
 
 public class Vector {
     Point3D head;
-   public Vector (Point3D in) throws IllegalArgumentException
-    {
+
+    public Vector(Point3D in) throws IllegalArgumentException {
         this.head = new Point3D(in);
-        if (head.equals (Point3D.ZERO)) throw new IllegalArgumentException ("all arguments are zero");
+        if (head.equals(Point3D.ZERO)) throw new IllegalArgumentException("all arguments are zero");
     }
-    public Vector (Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException {
+
+    public Vector(Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException {
         this.head = new Point3D(x, y, z);
         if (head.equals(Point3D.ZERO)) throw new IllegalArgumentException("all arguments are zero");
     }
