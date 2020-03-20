@@ -44,9 +44,9 @@ public class Point3D {
      * @param other
      */
     public Point3D(Point3D other){
-        this.x = other.x;
-        this.y = other.y;
-        this.z = other.z;
+        this.x = new Coordinate(other.x.get());
+        this.y = new Coordinate(other.y.get());
+        this.z = new Coordinate(other.z.get());
     }
 
     /**
@@ -71,15 +71,14 @@ public class Point3D {
         return z.get();
     }
 
-    public Vector Subtract(Point3D sub)
-    {
-        return new Vector(sub.x.get()-this.x.get(),sub.y.get()-this.y.get(),sub.z.get()-this.z.get());
+    public Vector subtract(Point3D sub) {
+        return new Vector(sub.x.get() - this.x.get(), sub.y.get() - this.y.get(), sub.z.get() - this.z.get());
     }
-    public double distanceSquared (Point3D other)
-    {
-        Vector ourVector = this.Subtract(other);
-        double d = Math.sqrt((ourVector.head.getX()*ourVector.head.getX())+(ourVector.head.getY()*ourVector.head.getY())+(ourVector.head.getZ()*ourVector.head.getZ()));
-        return d*d;
+
+    public double distanceSquared(Point3D other) {
+        Vector ourVector = this.subtract(other);
+        double d = Math.sqrt((ourVector.head.getX() * ourVector.head.getX()) + (ourVector.head.getY() * ourVector.head.getY()) + (ourVector.head.getZ() * ourVector.head.getZ()));
+        return d * d;
     }
     public Point3D add (Vector vec)
     {
