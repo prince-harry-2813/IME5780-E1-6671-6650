@@ -1,3 +1,6 @@
+//arie rosental 316386671 hariroze@gmail.com
+//yossef steinmetz 314846650 7861787@gmail.com
+
 import primitives.Vector;
 
 import static java.lang.System.out;
