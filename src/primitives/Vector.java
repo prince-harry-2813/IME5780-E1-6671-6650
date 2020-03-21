@@ -2,36 +2,28 @@ package primitives;
 
 public class Vector {
     Point3D head;
-   public Vector (Point3D in) throws IllegalArgumentException
-    {
-        this.head.x = new Coordinate(in.x.get());
-        this.head.y = new Coordinate(in.y.get());
-        this.head.z = new Coordinate(in.z.get());
-        if (head.equals (Point3D.ZERO)) throw new IllegalArgumentException ("all arguments are zero");
+
+    public Vector(Point3D in) throws IllegalArgumentException {
+        this.head = new Point3D(in);
+        if (head.equals(Point3D.ZERO)) throw new IllegalArgumentException("all arguments are zero");
     }
-    public Vector (Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException
-    {
-        this.head.x = x;
-        this.head.y = y;
-        this.head.z = z;
+
+    public Vector(Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException {
+        this.head = new Point3D(x, y, z);
         if (head.equals(Point3D.ZERO)) throw new IllegalArgumentException("all arguments are zero");
     }
 
     public Vector(double x, double y, double z) throws IllegalArgumentException {
-        this.head.x = new Coordinate(x);
-        this.head.y = new Coordinate(y);
-        this.head.z = new Coordinate(z);
+        this.head = new Point3D(x, y, z);
         if (head.equals(Point3D.ZERO)) throw new IllegalArgumentException("all arguments are zero");
     }
 
     public Vector(Vector other) {
-        this.head.x = new Coordinate(other.head.getX());
-        this.head.y = new Coordinate(other.head.getY());
-        this.head.z = new Coordinate(other.head.getZ());
+        this.head = new Point3D(other.head);
     }
 
     public Vector subtract(Vector other) {
-        return new Vector(this.head.Subtract(other.head));
+        return new Vector(this.head.subtract(other.head));
     }
 
     public Vector add(Vector other) {

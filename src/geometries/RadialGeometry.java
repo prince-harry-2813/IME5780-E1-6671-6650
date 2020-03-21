@@ -1,10 +1,11 @@
 package geometries;
 
-public abstract class RadialGeometry implements Geometries
-{
+public abstract class RadialGeometry implements Geometry {
     double _radius;
-    RadialGeometry(double radius)
-    {this._radius=radius;}
+
+    public RadialGeometry(double radius) {
+        this._radius = radius;
+    }
 
     public double get_radius() {
         return _radius;
