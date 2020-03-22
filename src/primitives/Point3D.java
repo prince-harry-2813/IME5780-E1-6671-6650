@@ -84,6 +84,12 @@ public class Point3D {
         return new Vector(sub.x.get() - this.x.get(), sub.y.get() - this.y.get(), sub.z.get() - this.z.get());
     }
 
+    /**
+     * calculate the distance between tow points
+     *
+     * @param other
+     * @return double number that represent the distance
+     */
     public double distanceSquared(Point3D other) {
         Vector ourVector = this.subtract(other);
         double d = Math.sqrt((ourVector.head.getX() * ourVector.head.getX()) + (ourVector.head.getY() * ourVector.head.getY()) + (ourVector.head.getZ() * ourVector.head.getZ()));

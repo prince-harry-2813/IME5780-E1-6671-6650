@@ -57,7 +57,7 @@ public class Vector {
      * @return
      */
     public Vector subtract(Vector other) {
-        return new Vector(this.head.subtract(other.head));
+        return (this.head.subtract(other.head));
     }
 
     /**
