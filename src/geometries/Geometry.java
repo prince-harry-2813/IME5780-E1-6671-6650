@@ -3,8 +3,16 @@ package geometries;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ * interface that serve all geometry abstract and complex shapes
+ */
 public interface Geometry {
-
-    public abstract Vector getNormal(Point3D point);
+    /**
+     * get point on R3 plane and calculate the normal
+     *
+     * @param point
+     * @return normal vector
+     */
+    Vector getNormal(Point3D point);
 
 }

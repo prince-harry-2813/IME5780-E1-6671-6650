@@ -1,19 +1,25 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Vector;
-
-public abstract class RadialGeometry
-{
+public abstract class RadialGeometry implements Geometry {
     double _radius;
-    RadialGeometry(double radius)
-    {this._radius=radius;}
 
+    /**
+     * ctor to all abstract circle object. accept one param that is the radius
+     *
+     * @param radius
+     */
+    public RadialGeometry(double radius) {
+        this._radius = radius;
+    }
+
+    /**
+     * getter
+     *
+     * @return the redius
+     */
     public double get_radius() {
         return _radius;
     }
-
-    public abstract Vector getNormal(Point3D point);
 
     @Override
     public String toString() {

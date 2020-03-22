@@ -3,7 +3,9 @@ package geometries;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
-
+/**
+ * represent the 3D shape of tube.
+ */
 
 public class Tube extends RadialGeometry {
 

@@ -6,6 +6,14 @@ import primitives.Vector;
 public class Cylinder extends Tube {
     double height;
 
+    /**
+     * ctor that based on father ctor, also accept the height to represent the cylinder.
+     *
+     * @param radius
+     * @param point
+     * @param vec
+     * @param h      :heigt
+     */
     public Cylinder(double radius, Point3D point, Vector vec, double h) {
         super(radius, point, vec);
         this.height = h;
