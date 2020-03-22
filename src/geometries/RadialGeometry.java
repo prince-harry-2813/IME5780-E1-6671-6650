@@ -1,6 +1,9 @@
 package geometries;
 
-public abstract class RadialGeometry implements Geometries
+import primitives.Point3D;
+import primitives.Vector;
+
+public abstract class RadialGeometry
 {
     double _radius;
     RadialGeometry(double radius)
@@ -9,6 +12,8 @@ public abstract class RadialGeometry implements Geometries
     public double get_radius() {
         return _radius;
     }
+
+    public abstract Vector getNormal(Point3D point);
 
     @Override
     public String toString() {

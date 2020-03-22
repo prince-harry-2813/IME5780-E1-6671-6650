@@ -90,15 +90,30 @@ public class Point3D {
         return d * d;
     }
 
+    /**
+     * Adding point to a Vector
+     * @param vec
+     * @return new instance of point 3D of the head of the vector
+     */
     public Point3D add(Vector vec) {
         return new Point3D(this.getX() + vec.head.getX(), this.getY() + vec.head.getY(), this.getZ() + vec.head.getZ());
     }
 
+    /**
+     * Calculates the squered distance of a vector from its normal.
+     * @param other
+     * @return A double number
+     */
     public double distance(Point3D other) {
         double d = this.distanceSquared(other);
         return Math.sqrt(d);
     }
 
+    /**
+     * Checks two point if their properties are equal
+     * @param obj
+     * @return A boolian varaible
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -108,6 +123,10 @@ public class Point3D {
         return x.equals(other.x) && y.equals(other.y) && z.equals(other.z);
     }
 
+    /**
+     *  Override Coordinates function
+     * @return To string of a Point 3D
+     */
     @Override
     public String toString() {
         return "Point3D{" +
