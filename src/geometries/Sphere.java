@@ -6,6 +6,7 @@ import primitives.Vector;
 public class Sphere extends RadialGeometry {
 
 
+
     public Sphere(double radius) {
         super(radius);
     }
