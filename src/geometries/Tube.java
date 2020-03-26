@@ -13,9 +13,10 @@ public class Tube extends RadialGeometry {
 
     /**
      * Ctor uses Ray stor and assigning it into Ray
-     * @param radius
-     * @param point
-     * @param vec
+     *
+     * @param radius of tube
+     * @param point  of tube
+     * @param vec    direction of tube
      */
     public Tube(double radius, Point3D point, Vector vec) {
         super(radius);
@@ -24,7 +25,7 @@ public class Tube extends RadialGeometry {
 
     /**
      * gets a vector and point 3D and normalizing it
-     * @param point
+     * @param point to extract a normal vector
      * @return New instance of the normal vector
      */
     @Override
