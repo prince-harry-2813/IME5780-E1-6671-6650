@@ -64,6 +64,7 @@ public class VectorTest {
 
     @Test
     public void testLengthSquared() {
+
     }
 
     @Test
