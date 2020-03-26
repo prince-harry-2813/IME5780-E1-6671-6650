@@ -21,14 +21,23 @@ public class VectorTest {
 
     }
 
+    /**
+     * test method for {@link primitives.Vector#add(Vector)}
+     */
     @Test
     public void testAdd() {
     }
 
+    /**
+     * test method for {@link primitives.Vector#scale(double)}
+     */
     @Test
     public void testScale() {
     }
 
+    /**
+     * test method for {@link primitives.Vector#dotProduct(Vector)}
+     */
     @Test
     public void testDotProduct() {
     }
@@ -61,20 +70,31 @@ public class VectorTest {
         }
     }
 
-
+    /**
+     * test method for {@link Vector#lengthSquared()}
+     */
     @Test
     public void testLengthSquared() {
 
     }
 
+    /**
+     * test method for {@link Vector#length()}
+     */
     @Test
     public void testLength() {
     }
 
+    /**
+     * test method for {@link Vector#normalize()}
+     */
     @Test
     public void testNormalize() {
     }
 
+    /**
+     * test method for {@link Vector#normalized()}
+     */
     @Test
     public void testNormalized() {
     }
