@@ -7,7 +7,8 @@ public class Vector {
      * Ctor of vector
      * Gets a point 3D
      * And checks if the vector is equal to ZERO then throwing an exception
-     * @param in
+     *
+     * @param in the copied class.
      * @throws IllegalArgumentException
      */
     public Vector(Point3D in) throws IllegalArgumentException {
