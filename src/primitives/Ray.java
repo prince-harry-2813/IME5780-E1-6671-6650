@@ -10,8 +10,9 @@ public class Ray {
     /**
      * Ctor of A Ray
      * Gets a point 3D and THe vector that the point start the Ray from
-     * @param po
-     * @param vec
+     *
+     * @param po  point of ray
+     * @param vec vector of ray
      */
     public Ray(Point3D po, Vector vec) {
         this.p0 = new Point3D(po);
