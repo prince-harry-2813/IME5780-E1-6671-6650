@@ -4,7 +4,7 @@ package primitives;
  * this class represent point in R3 dimension.
  * the class hold 3 instance of coord to describe a point.
  *
- * @author yossef steinmetz & arie rosental
+ * @author yossef steinmetz and arie rosental
  */
 public class Point3D {
 
@@ -19,9 +19,9 @@ public class Point3D {
     /**
      * ctor that gets three Coordinates
      *
-     * @param x
-     * @param y
-     * @param z
+     * @param x coord x
+     * @param y coord y
+     * @param z coord z
      */
     public Point3D(Coordinate x, Coordinate y, Coordinate z) {
         this.x = new Coordinate(x);
@@ -32,9 +32,9 @@ public class Point3D {
     /**
      * ctor that get three values params
      *
-     * @param x
-     * @param y
-     * @param z
+     * @param x coord x
+     * @param y coord y
+     * @param z coord z
      */
     public Point3D(double x, double y, double z) {
         this.x = new Coordinate(x);
@@ -45,7 +45,7 @@ public class Point3D {
     /**
      * Copy ctor
      *
-     * @param other
+     * @param other copied obj point_3D
      */
     public Point3D(Point3D other) {
         this.x = new Coordinate(other.x.get());
@@ -87,7 +87,7 @@ public class Point3D {
     /**
      * calculate the distance between tow points
      *
-     * @param other
+     * @param other the second point.
      * @return double number that represent the distance
      */
     public double distanceSquared(Point3D other) {
@@ -98,7 +98,8 @@ public class Point3D {
 
     /**
      * Adding point to a Vector
-     * @param vec
+     *
+     * @param vec vector to add
      * @return new instance of point 3D of the head of the vector
      */
     public Point3D add(Vector vec) {
@@ -107,7 +108,7 @@ public class Point3D {
 
     /**
      * Calculates the squered distance of a vector from its normal.
-     * @param other
+     * @param other the second point
      * @return A double number
      */
     public double distance(Point3D other) {
@@ -117,7 +118,7 @@ public class Point3D {
 
     /**
      * Checks two point if their properties are equal
-     * @param obj
+     * @param obj the obj that we compere to
      * @return A boolian varaible
      */
     @Override

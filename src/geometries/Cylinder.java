@@ -9,10 +9,10 @@ public class Cylinder extends Tube {
     /**
      * ctor that based on father ctor, also accept the height to represent the cylinder.
      *
-     * @param radius
-     * @param point
-     * @param vec
-     * @param h      :heigt
+     * @param radius of cylinder
+     * @param point  of cylinder
+     * @param vec    of cylinder
+     * @param h      height
      */
     public Cylinder(double radius, Point3D point, Vector vec, double h) {
         super(radius, point, vec);

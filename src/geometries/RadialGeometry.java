@@ -6,7 +6,7 @@ public abstract class RadialGeometry implements Geometry {
     /**
      * ctor to all abstract circle object. accept one param that is the radius
      *
-     * @param radius
+     * @param radius of shape
      */
     public RadialGeometry(double radius) {
         this._radius = radius;
