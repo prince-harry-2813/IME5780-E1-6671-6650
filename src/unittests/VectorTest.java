@@ -29,7 +29,7 @@ public class VectorTest {
     }
 
     /**
-     * test method for {@link primitives.Vector#scale(double)}
+     * test method for {@link Vector#scale(double)}
      */
     @Test
     public void testScale() {
@@ -40,6 +40,11 @@ public class VectorTest {
      */
     @Test
     public void testDotProduct() {
+        Vector v1 = new Vector(1, 2, 3);
+        Vector v2 = new Vector(-2, -4, -6);
+        // ============ Equivalence Partitions Tests ==============
+
+        // =============== Boundary Values Tests ==================
     }
 
     /**
@@ -75,7 +80,8 @@ public class VectorTest {
      */
     @Test
     public void testLengthSquared() {
-
+        Vector v1 = new Vector(1, 2, 3);
+        assertTrue("ERROR: lengthSquared() wrong value", (isZero(v1.lengthSquared() - 14)));
     }
 
     /**
@@ -83,6 +89,8 @@ public class VectorTest {
      */
     @Test
     public void testLength() {
+        assertTrue("ERROR: length() wrong value", isZero(new Vector(0, 3, 4).length() - 5));
+
     }
 
     /**
@@ -90,6 +98,7 @@ public class VectorTest {
      */
     @Test
     public void testNormalize() {
+
     }
 
     /**
