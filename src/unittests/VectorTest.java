@@ -91,6 +91,7 @@ public class VectorTest {
     public void testLength() {
         assertTrue("ERROR: length() wrong value", isZero(new Vector(0, 3, 4).length() - 5));
 
+
     }
 
     /**
