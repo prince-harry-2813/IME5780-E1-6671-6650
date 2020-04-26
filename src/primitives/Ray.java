@@ -19,8 +19,17 @@ public class Ray {
         this.dir = new Vector(vec.normalize());
     }
 
+    public Vector getDir() {
+        return dir;
+    }
+
+    public Point3D getP0() {
+        return p0;
+    }
+
     /**
      * Checks two instance of Ray if their properties are equal
+     *
      * @param obj
      * @return A boolian veraible
      */
