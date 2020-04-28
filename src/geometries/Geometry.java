@@ -6,7 +6,7 @@ import primitives.Vector;
 /**
  * interface that serve all geometry abstract and complex shapes
  */
-public interface Geometry {
+public interface Geometry extends Intersectable {
     /**
      * get point on R3 plane and calculate the normal
      *
