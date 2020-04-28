@@ -1,7 +1,11 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 public class Cylinder extends Tube {
     double height;
@@ -19,9 +23,19 @@ public class Cylinder extends Tube {
         this.height = h;
     }
 
+    public Cylinder(double radius, double h, Ray axis) {
+        super(radius, axis);
+        this.height = h;
+    }
+
     @Override
     public Vector getNormal(Point3D point) {
-        return super.getNormal(point);
+
+        double t = alignZero(point.subtract(this.axisRay.getP0()).dotProduct(this.axisRay.getDir()));
+        if (t == 0 || isZero(this.height - t))
+            return axisRay.getDir().normalize();
+        Point3D o = axisRay.getP0().add(axisRay.getDir().scale(t));
+        return point.subtract(o).normalize();
     }
 
     @Override

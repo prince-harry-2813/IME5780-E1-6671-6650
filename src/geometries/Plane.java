@@ -15,7 +15,9 @@ public class Plane {
 
     public Plane(Point3D a, Point3D b, Point3D c) {
         p = new Point3D(a);
-        normal = null;
+        Vector v1 = p.subtract(b);
+        Vector v2 = p.subtract(c);
+        normal = (v1.crossProduct(v2).normalize());
     }
 
     public Vector getNormal() {
