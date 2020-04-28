@@ -3,6 +3,10 @@ package primitives;
 public class Vector {
     Point3D head;
 
+    public Point3D getHead() {
+        return head;
+    }
+
     /**
      * Ctor of vector
      * Gets a point 3D
@@ -151,7 +155,7 @@ public class Vector {
         if (obj == null) return false;
         if (!(obj instanceof Vector)) return false;
         Vector other = (Vector) obj;
-        return head.equals(other);
+        return head.equals(other.head);
     }
 
     /**
