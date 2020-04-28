@@ -4,8 +4,6 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
-import static primitives.Util.alignZero;
-
 /**
  * represent the 3D shape of tube.
  */
@@ -39,10 +37,10 @@ public class Tube extends RadialGeometry {
      */
     @Override
     public Vector getNormal(Point3D poi) {
-        double t = alignZero(this.axisRay.getDir().dotProduct(this.axisRay.getP0().subtract(poi)));
+        double t = this.axisRay.getDir().dotProduct(this.axisRay.getP0().subtract(poi));
         Point3D O = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
-        Vector normal = poi.subtract(O).normalize();
-        return normal;
+        return (poi.subtract(O).normalize());
+
     }
 
     @Override

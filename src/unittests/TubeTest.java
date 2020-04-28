@@ -23,7 +23,7 @@ public class TubeTest {
         Tube t2 = new Tube(2, r2);
 
         assertEquals(v1.subtract(new Vector(0, 2, 0)).scale(1d / Math.sqrt(2)), t1.getNormal(v1.getHead()));
-
-        assertEquals(new Vector(-4, 0, 2).scale(1d / Math.sqrt(20)), t2.getNormal(new Point3D(0, 2, 11)));
+        Vector f = new Vector(new Vector(-4, 0, 2).scale(1d / Math.sqrt(20)));
+        assertEquals(f, t2.getNormal(new Point3D(0, 2, 11)));
     }
 }
