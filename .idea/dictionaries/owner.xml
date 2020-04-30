@@ -2,6 +2,7 @@
   <dictionary name="owner">
     <words>
       <w>coord</w>
+      <w>ctor</w>
     </words>
   </dictionary>
 </component>

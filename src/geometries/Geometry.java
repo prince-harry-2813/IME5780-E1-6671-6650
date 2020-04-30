@@ -11,7 +11,7 @@ public interface Geometry extends Intersectable {
      * get point on R3 plane and calculate the normal
      *
      * @param point to extract out normal vector
-     * @return normal vector
+     * @return Normal vector
      */
     Vector getNormal(Point3D point);
 

@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 /**
  *
  */
@@ -19,13 +21,28 @@ public class Ray {
         this.dir = new Vector(vec.normalize());
     }
 
+    /**
+     * @return Vector of direction
+     */
     public Vector getDir() {
-        return dir;
+        return new Vector(dir);
     }
 
+    /**
+     * @return Point at the head of the ray
+     */
     public Point3D getP0() {
-        return p0;
+        return new Point3D(p0);
     }
+
+    /**
+     * @param t = length of ray from head
+     * @return point on ray
+     */
+    public Point3D getPointOnRay(double t) {
+        return isZero(t) ? getP0() : new Point3D(getP0()).add(getDir().scale(t));
+    }
+
 
     /**
      * Checks two instance of Ray if their properties are equal

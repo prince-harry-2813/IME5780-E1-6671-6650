@@ -86,7 +86,8 @@ public class Vector {
 
     /**
      * Gets Two vector and multiple it with each other
-     * @param other
+     *
+     * @param other other vector
      * @return Dot product as double
      */
     public double dotProduct(Vector other) {
@@ -95,7 +96,8 @@ public class Vector {
 
     /**
      * Gets two vectors and multiple each part of them in the other
-     * @param oth
+     *
+     * @param oth other vector
      * @return Its dot product ( a new vector that its vertical to the two others
      */
     public Vector crossProduct(Vector oth) {
@@ -160,12 +162,10 @@ public class Vector {
 
     /**
      * print vector as mathematical view
-     * @return
+     * @return string
      */
     @Override
     public String toString() {
-        return "Vector{" +
-                "head=" + head +
-                '}';
+        return "Vector{" + head + '}';
     }
 }
