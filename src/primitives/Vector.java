@@ -81,7 +81,7 @@ public class Vector {
      * @return New instance of a vector
      */
     public Vector scale(double scalar) {
-        return new Vector(scalar * this.head.getX(), scalar * this.head.getY(), scalar * this.head.getZ());
+        return new Vector(scalar * this.head.getX().get(), scalar * this.head.getY().get(), scalar * this.head.getZ().get());
     }
 
     /**
@@ -91,7 +91,7 @@ public class Vector {
      * @return Dot product as double
      */
     public double dotProduct(Vector other) {
-        return ((this.head.getX() * other.head.getX()) + (this.head.getY() * other.head.getY()) + (this.head.getZ() * other.head.getZ()));
+        return ((this.head.getX().get() * other.head.getX().get()) + (this.head.getY().get() * other.head.getY().get()) + (this.head.getZ().get() * other.head.getZ().get()));
     }
 
     /**
@@ -101,9 +101,9 @@ public class Vector {
      * @return Its dot product ( a new vector that its vertical to the two others
      */
     public Vector crossProduct(Vector oth) {
-        return new Vector((this.head.getY() * oth.head.getZ()) - (this.head.getZ() * oth.head.getY())
-                , (this.head.getZ() * oth.head.getX()) - (this.head.getX() * oth.head.getZ())
-                , (this.head.getX() * oth.head.getY()) - (this.head.getY() * oth.head.getX()));
+        return new Vector((this.head.getY().get() * oth.head.getZ().get()) - (this.head.getZ().get() * oth.head.getY().get())
+                , (this.head.getZ().get() * oth.head.getX().get()) - (this.head.getX().get() * oth.head.getZ().get())
+                , (this.head.getX().get() * oth.head.getY().get()) - (this.head.getY().get() * oth.head.getX().get()));
     }
 
     /**
@@ -111,7 +111,7 @@ public class Vector {
      * @return Positive Squared value of the vector
      */
     public Double lengthSquared() {
-        double d = Math.sqrt((head.getX() * head.getX()) + (head.getY() * head.getY()) + (head.getZ() * head.getZ()));
+        double d = Math.sqrt((head.getX().get() * head.getX().get()) + (head.getY().get() * head.getY().get()) + (head.getZ().get() * head.getZ().get()));
         return d * d;
     }
 
@@ -130,9 +130,9 @@ public class Vector {
      */
     public Vector normalize() {
         double divider = this.length();
-        this.head.x = new Coordinate(head.getX() / divider);
-        this.head.y = new Coordinate(head.getY() / divider);
-        this.head.z = new Coordinate(head.getZ() / divider);
+        this.head.x = new Coordinate(head.getX().get() / divider);
+        this.head.y = new Coordinate(head.getY().get() / divider);
+        this.head.z = new Coordinate(head.getZ().get() / divider);
         return this;
     }
 
