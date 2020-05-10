@@ -9,3 +9,4 @@ public interface Intersectable {
 
     List<Point3D> findIntersections(Ray ray);
 }
+
