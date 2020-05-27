@@ -4,6 +4,10 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
+import static primitives.Util.alignZero;
+
 /**
  * represent the 3D shape of tube.
  */
@@ -37,7 +41,7 @@ public class Tube extends RadialGeometry {
      */
     @Override
     public Vector getNormal(Point3D poi) {
-        double t = this.axisRay.getDir().dotProduct(this.axisRay.getP0().subtract(poi));
+        double t = alignZero(this.axisRay.getDir().dotProduct(this.axisRay.getP0().subtract(poi)));
         Point3D O = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
         return (poi.subtract(O).normalize());
 
@@ -48,5 +52,10 @@ public class Tube extends RadialGeometry {
         return "Tube{" +
                 "axisRay=" + axisRay +
                 "} " + super.toString();
+    }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
     }
 }

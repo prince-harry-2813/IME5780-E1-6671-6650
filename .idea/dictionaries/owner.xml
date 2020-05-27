@@ -2,6 +2,8 @@
   <dictionary name="owner">
     <words>
       <w>coord</w>
+      <w>ctor</w>
+      <w>intersectable</w>
     </words>
   </dictionary>
 </component>
