@@ -58,26 +58,29 @@ public class Point3D {
      *
      * @return coord value of plane x
      */
-    public double getX() {
-        return x.get();
+    public Coordinate getX() {
+        return x;
     }
+
 
     /**
      * point3D getter
      *
      * @return coord value of plane y
      */
-    public double getY() {
-        return y.get();
+    public Coordinate getY() {
+        return y;
     }
+
 
     /**
      * point3D getter
      *
      * @return coord value of plane Z
      */
-    public double getZ() {
-        return z.get();
+
+    public Coordinate getZ() {
+        return z;
     }
 
     public Vector subtract(Point3D sub) {
@@ -92,7 +95,7 @@ public class Point3D {
      */
     public double distanceSquared(Point3D other) {
         Vector ourVector = this.subtract(other);
-        double d = Math.sqrt((ourVector.head.getX() * ourVector.head.getX()) + (ourVector.head.getY() * ourVector.head.getY()) + (ourVector.head.getZ() * ourVector.head.getZ()));
+        double d = Math.sqrt((ourVector.head.getX().get() * ourVector.head.getX().get()) + (ourVector.head.getY().get() * ourVector.head.getY().get()) + (ourVector.head.getZ().get() * ourVector.head.getZ().get()));
         return d * d;
     }
 
@@ -103,7 +106,7 @@ public class Point3D {
      * @return new instance of point 3D of the head of the vector
      */
     public Point3D add(Vector vec) {
-        return new Point3D(this.getX() + vec.head.getX(), this.getY() + vec.head.getY(), this.getZ() + vec.head.getZ());
+        return new Point3D(this.getX().get() + vec.head.getX().get(), this.getY().get() + vec.head.getY().get(), this.getZ().get() + vec.head.getZ().get());
     }
 
     /**
@@ -136,10 +139,6 @@ public class Point3D {
      */
     @Override
     public String toString() {
-        return "Point3D{" +
-                "x=" + x +
-                ", y=" + y +
-                ", z=" + z +
-                '}';
+        return "(" + "x=" + x + ", y=" + y + ", z=" + z + ')';
     }
 }
