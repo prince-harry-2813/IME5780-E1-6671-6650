@@ -7,8 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Geometries implements Intersectable {
-
-    List<Intersectable> geomList = new ArrayList<Intersectable>();
+    /**
+     * collect of geometries
+     */
+    List<Intersectable> geomList;
 
     /**
      * default ctor
