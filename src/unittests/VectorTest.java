@@ -84,6 +84,8 @@ public class VectorTest {
             fail("crossProduct() for parallel vectors does not throw an exception");
         } catch (Exception e) {
         }
+        Vector c = new Vector(0, 0, 1).crossProduct(new Vector(0, -1, 0));
+        assertEquals("Error", c, new Vector(1, 0, 0));
     }
 
     /**
