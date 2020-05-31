@@ -20,8 +20,8 @@ public class VectorTest {
     public void testSubtract() {
         Vector v1 = new Vector(1, 2, 3);
         Vector v3 = new Vector(0, 3, -2);
-        assertEquals("ERROR: subtract() wrong value", v1.subtract(v3).getHead().getY().get(), 1, 0.00001);
-        assertEquals("ERROR: subtract() wrong value", v1.subtract(v3).getHead().getX().get(), -1, 0.00001);
+        assertEquals("ERROR: subtract() wrong value", v1.subtract(v3).getHead().getY().get(), -1, 0.00001);
+        assertEquals("ERROR: subtract() wrong value", v1.subtract(v3).getHead().getX().get(), 1, 0.00001);
 
     }
 
@@ -43,7 +43,7 @@ public class VectorTest {
     public void testScale() {
         Vector v3 = new Vector(0, 3, -2);
         assertTrue("ERROR: scale() wrong value", isZero(v3.scale(23).getHead().getX().get()));
-        assertEquals("ERROR: scale() wrong value", v3.scale(23).getHead().getZ(), -46);
+        assertEquals("ERROR: scale() wrong value", v3.scale(23).getHead().getZ().get(), -46.0, 0.00001);
     }
 
     /**
