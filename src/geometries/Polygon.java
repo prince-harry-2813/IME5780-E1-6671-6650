@@ -6,6 +6,7 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -91,6 +92,25 @@ public class Polygon implements Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-        return null;
+        List<Point3D> list = _plane.findIntersections(ray);
+        if (list == null)
+            return null;
+        Point3D p0 = ray.getP0();
+        Vector v = ray.getDir();
+        Vector v1 = p0.subtract(_vertices.get(1));
+        Vector v2 = p0.subtract(_vertices.get(0));
+        double sign = v.dotProduct(v1.crossProduct(v2).normalized());
+        if (isZero(sign))
+            return null;
+        boolean s = sign > 0;
+
+        for (int i = _vertices.size() - 1; i > 0; i--) {
+            v1 = v2;
+            v2 = p0.subtract(_vertices.get(i));
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2).normalized()));
+            if (isZero(sign)) return null;
+            if (s != (sign > 0)) return null;
+        }
+        return list;
     }
 }
