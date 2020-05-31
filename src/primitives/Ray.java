@@ -21,6 +21,11 @@ public class Ray {
         this.dir = new Vector(vec.normalize());
     }
 
+    public Ray(Ray oth) {
+        this.p0 = new Point3D(oth.getP0());
+        this.dir = new Vector(oth.getDir().normalize());
+    }
+
     /**
      * @return Vector of direction
      */
@@ -52,10 +57,19 @@ public class Ray {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (!(obj instanceof Ray)) return false;
+        if (obj == null || !(obj instanceof Ray))
+            return false;
+        if (this == obj)
+            return true;
         Ray oth = (Ray) obj;
         return p0.equals(oth.p0) && dir.equals(oth.dir);
+    }
+
+    @Override
+    public String toString() {
+        return "Ray{" +
+                "p0=" + p0 +
+                ", dir=" + dir +
+                '}';
     }
 }
