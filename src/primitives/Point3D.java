@@ -96,7 +96,7 @@ public class Point3D {
      * @return vector between tow points
      */
     public Vector subtract(Point3D sub) {
-        return new Vector(sub.x.get() - this.x.get(), sub.y.get() - this.y.get(), sub.z.get() - this.z.get());
+        return new Vector(this.x.get() - sub.x.get(), this.y.get() - sub.y.get(), this.z.get() - sub.z.get());
     }
 
     /**

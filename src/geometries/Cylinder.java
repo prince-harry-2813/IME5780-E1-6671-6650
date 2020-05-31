@@ -31,11 +31,11 @@ public class Cylinder extends Tube {
     @Override
     public Vector getNormal(Point3D point) {
 
-        double t = alignZero(point.subtract(this.axisRay.getP0()).dotProduct(this.axisRay.getDir()));
+        double t = alignZero(this.axisRay.getP0().subtract(point).dotProduct(this.axisRay.getDir()));
         if (t == 0 || isZero(this.height - t))
             return axisRay.getDir().normalize();
         Point3D o = axisRay.getP0().add(axisRay.getDir().scale(t));
-        return point.subtract(o).normalize();
+        return o.subtract(point).normalize();
     }
 
     @Override

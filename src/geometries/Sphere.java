@@ -28,7 +28,7 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public Vector getNormal(Point3D point) {
-        Vector vec = new Vector(center.subtract(point));
+        Vector vec = new Vector(point.subtract(center));
         return vec.normalized();
     }
 
@@ -36,7 +36,7 @@ public class Sphere extends RadialGeometry {
     public List<Point3D> findIntersections(Ray ray) {
         Vector u;
         try {
-            u = ray.getP0().subtract(center);
+            u = center.subtract(ray.getP0());
         } catch (IllegalArgumentException e) // in case that the ray start at the edge of the sphere
         {
             return List.of(ray.getPointOnRay(get_radius()));
