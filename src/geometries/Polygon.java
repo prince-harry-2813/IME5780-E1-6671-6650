@@ -99,7 +99,9 @@ public class Polygon implements Geometry {
         Vector v = ray.getDir();
         Vector v1 = p0.subtract(_vertices.get(1));
         Vector v2 = p0.subtract(_vertices.get(0));
-        double sign = v.dotProduct(v1.crossProduct(v2).normalized());
+        double sign = v.dotProduct(v1.crossProduct(v2)
+                .normalized()
+        );
         if (isZero(sign))
             return null;
         boolean s = sign > 0;
@@ -107,7 +109,9 @@ public class Polygon implements Geometry {
         for (int i = _vertices.size() - 1; i > 0; i--) {
             v1 = v2;
             v2 = p0.subtract(_vertices.get(i));
-            sign = alignZero(v.dotProduct(v1.crossProduct(v2).normalized()));
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2)
+                    .normalized()
+            ));
             if (isZero(sign)) return null;
             if (s != (sign > 0)) return null;
         }
