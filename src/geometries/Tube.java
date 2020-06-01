@@ -6,7 +6,7 @@ import primitives.Vector;
 
 import java.util.List;
 
-import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * represent the 3D shape of tube.
@@ -14,7 +14,7 @@ import static primitives.Util.alignZero;
 
 public class Tube extends RadialGeometry {
 
-    Ray axisRay;
+    protected final Ray axisRay;
 
     /**
      * Ctor uses Ray stor and assigning it into Ray
@@ -41,9 +41,12 @@ public class Tube extends RadialGeometry {
      */
     @Override
     public Vector getNormal(Point3D poi) {
-        double t = alignZero(this.axisRay.getDir().dotProduct(poi.subtract(this.axisRay.getP0())));
-        Point3D O = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
-        return (O.subtract(poi).normalize());
+        Point3D O = this.axisRay.getP0();
+        double t = poi.subtract(this.axisRay.getP0()).dotProduct(this.axisRay.getDir());
+        if (!isZero(t)) {
+            O = this.axisRay.getP0().add(this.axisRay.getDir().scale(t));
+        }
+        return (poi.subtract(O).normalized());
 
     }
 
