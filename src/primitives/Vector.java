@@ -1,5 +1,7 @@
 package primitives;
 
+import static primitives.Util.isZero;
+
 public class Vector {
     Point3D head;
 
@@ -130,6 +132,9 @@ public class Vector {
      */
     public Vector normalize() {
         double divider = this.length();
+        if (isZero(divider))
+            throw new ArithmeticException("can't divide by zero");
+
         this.head.x = new Coordinate(head.getX().get() / divider);
         this.head.y = new Coordinate(head.getY().get() / divider);
         this.head.z = new Coordinate(head.getZ().get() / divider);

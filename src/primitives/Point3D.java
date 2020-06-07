@@ -83,8 +83,20 @@ public class Point3D {
         return z;
     }
 
+    /**
+     * @param sub vector to subtracting from original point (this - sub)
+     * @return Point that accept by subtract vector from point
+     */
+    public Point3D subtract(Vector sub) {
+        return new Point3D(this.x.get() - sub.head.x.get(), this.y.get() - sub.head.y.get(), this.z.get() - sub.head.z.get());
+    }
+
+    /**
+     * @param sub point that subtract the original point (this - sub)
+     * @return vector between tow points
+     */
     public Vector subtract(Point3D sub) {
-        return new Vector(sub.x.get() - this.x.get(), sub.y.get() - this.y.get(), sub.z.get() - this.z.get());
+        return new Vector(this.x.get() - sub.x.get(), this.y.get() - sub.y.get(), this.z.get() - sub.z.get());
     }
 
     /**
