@@ -34,8 +34,8 @@ public class Plane implements Geometry {
      */
     public Plane(Point3D a, Point3D b, Point3D c) {
         p = new Point3D(a);
-        Vector v1 = p.subtract(b);
-        Vector v2 = p.subtract(c);
+        Vector v1 = b.subtract(p);
+        Vector v2 = c.subtract(p);
         normal = (v1.crossProduct(v2).normalize());
     }
 
@@ -63,7 +63,7 @@ public class Plane implements Geometry {
     public List<Point3D> findIntersections(Ray ray) {
         Vector p_0;
         try {
-            p_0 = ray.getP0().subtract(p);
+            p_0 = p.subtract(ray.getP0());
         } catch (IllegalArgumentException e) {
             return null;
         }
@@ -71,7 +71,7 @@ public class Plane implements Geometry {
         double nv = alignZero(getNormal().dotProduct(ray.getDir()));
         if (isZero(nv))
             return null;
-        double t = alignZero((getNormal().dotProduct(ray.getP0().subtract(p))) / (nv));
+        double t = alignZero((getNormal().dotProduct(p.subtract(ray.getP0()))) / (nv));
 
         if (t <= 0)
             return null;
