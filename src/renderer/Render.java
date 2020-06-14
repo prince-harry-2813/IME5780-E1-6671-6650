@@ -13,14 +13,22 @@ public class Render {
     ImageWriter _imageWriter;
     Scene _scene;
 
+    /**
+     * Ctor for render accept scene to compile the objects init the image by image writer
+     *
+     * @param imageWriter instance of ImageWriter class to crate new image
+     * @param scene       instance of Scene to handled with essence of 3D and light in the picture
+     */
     public Render(ImageWriter imageWriter, Scene scene) {
         this._imageWriter = imageWriter;
         this._scene = scene;
     }
 
+    /**
+     * combine the scene in the image
+     */
     public void renderImage() {
-        Camera camera
-                = _scene.get_camera();
+        Camera camera = _scene.get_camera();
         Intersectable geometries = _scene.get_geometries();
         java.awt.Color background = _scene.get_background().getColor();
         int nx = _imageWriter.getNx();
@@ -41,10 +49,18 @@ public class Render {
         }
     }
 
+    /**
+     * @param p
+     * @return
+     */
     private Color calcColor(Point3D p) {
         return _scene.get_ambientLight().get_intensity();
     }
 
+    /**
+     * @param point3DS list of camera intersection points.
+     * @return closet point to camera position
+     */
     public Point3D getClosestPoint(List<Point3D> point3DS) {
         Point3D pResult = null;
         double distance = Double.MAX_VALUE;
@@ -60,6 +76,12 @@ public class Render {
         return pResult;
     }
 
+    /**
+     * util method to crate grid line over picture
+     *
+     * @param interval int' X int' size of Grid
+     * @param color    color og the stripes
+     */
     public void printGrid(int interval, java.awt.Color color) {
         int nx = _imageWriter.getNx(), ny = _imageWriter.getNy();
         for (int i = 0; i < ny; i++) {
@@ -71,6 +93,9 @@ public class Render {
         }
     }
 
+    /**
+     * calling to print image method in image writer
+     */
     public void writeToImage() {
         this._imageWriter.writeToImage();
     }
