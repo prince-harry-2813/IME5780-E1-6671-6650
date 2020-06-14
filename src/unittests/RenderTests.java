@@ -46,4 +46,19 @@ public class RenderTests {
         render.printGrid(50, java.awt.Color.YELLOW);
         render.writeToImage();
     }
+
+    @Test
+    public void RenderTest() {
+        Scene scene = new Scene("test 2nd");
+        scene.set_camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_distance(100);
+        scene.set_background(new Color(0, 0, 255));
+        scene.set_ambientLight(new AmbientLight(new Color(255, 255, 0), 1));
+        scene.addGeometries(new Sphere(44, new Point3D(0, 0, 200)));
+        ImageWriter imageWriter = new ImageWriter("render test 2nd", 500, 500, 500, 500);
+        Render render = new Render(imageWriter, scene);
+        render.renderImage();
+        render.printGrid(50, java.awt.Color.darkGray);
+        render.writeToImage();
+    }
 }
