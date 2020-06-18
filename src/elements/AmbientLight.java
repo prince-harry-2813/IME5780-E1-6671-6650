@@ -2,8 +2,8 @@ package elements;
 
 import primitives.Color;
 
-public class AmbientLight {
-    Color _intensity;
+public class AmbientLight extends Light {
+
 
     /**
      * Ctor for ambient light
@@ -12,7 +12,7 @@ public class AmbientLight {
      * @param ka
      */
     public AmbientLight(Color ia, double ka) {
-        this._intensity = ia.scale(ka);
+        super(ia.scale(ka));
     }
 
     /**
@@ -24,12 +24,5 @@ public class AmbientLight {
         this(ia, 1d);
     }
 
-    /**
-     * getter
-     *
-     * @return intensity of ambient light
-     */
-    public Color get_intensity() {
-        return _intensity;
-    }
+
 }

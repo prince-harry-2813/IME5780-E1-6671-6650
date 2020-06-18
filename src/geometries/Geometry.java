@@ -16,7 +16,7 @@ public abstract class Geometry implements Intersectable {
      * @param emission Color
      */
     public Geometry(Color emission) {
-        this._emission = emission;
+        this._emission = new Color(emission);
     }
 
     /**

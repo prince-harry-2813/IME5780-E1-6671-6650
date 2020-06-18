@@ -1,5 +1,6 @@
 package geometries;
 
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -21,8 +22,25 @@ public class Plane extends Geometry {
      * @param vec   Vector of plane
      */
     public Plane(Point3D point, Vector vec) {
+        super();//define emission default color
+
         p = new Point3D(point);
         normal = new Vector(vec.normalize());
+
+    }
+
+    /**
+     * ctor of plane by point and vector
+     *
+     * @param point Point3D
+     * @param vec   Vector of plane
+     */
+    public Plane(Color emission, Point3D point, Vector vec) {
+        super(emission);//define emission default color
+
+        p = new Point3D(point);
+        normal = new Vector(vec.normalize());
+
     }
 
     /**
@@ -33,6 +51,23 @@ public class Plane extends Geometry {
      * @param c Point3D C
      */
     public Plane(Point3D a, Point3D b, Point3D c) {
+        super();//define emission default color
+        p = new Point3D(a);
+        Vector v1 = b.subtract(p);
+        Vector v2 = c.subtract(p);
+        normal = (v1.crossProduct(v2).normalize());
+    }
+
+    /**
+     * ctor of plane by three points, calculate the plane normal
+     *
+     * @param emission color
+     * @param a        Point3D A
+     * @param b        Point3D B
+     * @param c        Point3D C
+     */
+    public Plane(Color emission, Point3D a, Point3D b, Point3D c) {
+        super(emission);//define emission default color
         p = new Point3D(a);
         Vector v1 = b.subtract(p);
         Vector v2 = c.subtract(p);

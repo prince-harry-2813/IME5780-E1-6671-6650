@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * class that hold a collection og geometries
+ */
 public class Geometries implements Intersectable {
     /**
      * collect of geometries

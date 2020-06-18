@@ -1,5 +1,6 @@
 package geometries;
 
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -23,7 +24,18 @@ public class Sphere extends RadialGeometry {
      */
     public Sphere(double radius, Point3D _center) {
         super(radius);
-        this.center = _center;
+        this.center = new Point3D(_center);
+    }
+
+    /**
+     * ctor
+     *
+     * @param radius  of the sphere
+     * @param _center point of the sphere
+     */
+    public Sphere(Color emission, double radius, Point3D _center) {
+        super(emission, radius);
+        this.center = new Point3D(_center);
     }
 
     @Override

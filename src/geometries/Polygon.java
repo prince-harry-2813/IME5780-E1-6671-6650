@@ -1,5 +1,6 @@
 package geometries;
 
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -25,6 +26,11 @@ public class Polygon extends Geometry {
      */
     protected Plane _plane;
 
+    public Polygon(Color emission, Point3D... vertices) {
+        this(vertices);
+        this._emission = emission;
+    }
+
     /**
      * Polygon constructor based on vertices list. The list must be ordered by edge
      * path. The polygon must be convex.
@@ -47,6 +53,7 @@ public class Polygon extends Geometry {
      *                                  </ul>
      */
     public Polygon(Point3D... vertices) {
+        super();//define emission default color
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         _vertices = List.of(vertices);

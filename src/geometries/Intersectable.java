@@ -5,6 +5,9 @@ import primitives.Ray;
 
 import java.util.List;
 
+/**
+ * interface for all intersectable geometries
+ */
 public interface Intersectable {
     /**
      * find intersection points from camera ray in 3D objects.
