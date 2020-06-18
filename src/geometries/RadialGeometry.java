@@ -2,7 +2,7 @@ package geometries;
 
 import static primitives.Util.isZero;
 
-public abstract class RadialGeometry implements Geometry {
+public abstract class RadialGeometry extends Geometry {
     double _radius;
 
     /**

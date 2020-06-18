@@ -33,13 +33,13 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         Vector u;
         try {
             u = center.subtract(ray.getP0());
         } catch (IllegalArgumentException e) // in case that the ray start at the edge of the sphere
         {
-            return List.of(ray.getPointOnRay(get_radius()));
+            return List.of(new GeoPoint(this, ray.getPointOnRay(get_radius())));
         }
         double tm = alignZero(ray.getDir().dotProduct(u));
         double d;
@@ -54,8 +54,8 @@ public class Sphere extends RadialGeometry {
         double t2 = alignZero(tm + th);
         if (t1 <= 0 && t2 <= 0) return null;
         if (t1 > 0 && t2 > 0)
-            return List.of(ray.getPointOnRay(t1), ray.getPointOnRay(t2));
-        return t1 > 0 ? List.of(ray.getPointOnRay(t1)) : List.of(ray.getPointOnRay(t2));
+            return List.of(new GeoPoint(this, ray.getPointOnRay(t1)), new GeoPoint(this, ray.getPointOnRay(t2)));
+        return t1 > 0 ? List.of(new GeoPoint(this, ray.getPointOnRay(t1))) : List.of(new GeoPoint(this, ray.getPointOnRay(t2)));
 
     }
 }

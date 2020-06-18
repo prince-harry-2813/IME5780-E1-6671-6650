@@ -15,7 +15,7 @@ import static primitives.Util.isZero;
  *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -91,17 +91,17 @@ public class Polygon implements Geometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        List<Point3D> list = _plane.findIntersections(ray);
+    public List<GeoPoint> findIntersections(Ray ray) {
+        List<GeoPoint> list = _plane.findIntersections(ray);
         if (list == null)
             return null;
         Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
         Vector v1 = _vertices.get(1).subtract(p0);
         Vector v2 = _vertices.get(0).subtract(p0);
-        double sign = v.dotProduct(v1.crossProduct(v2)
-                .normalized()
-        );
+
+        double sign = v.dotProduct(v1.crossProduct(v2).normalized());
+
         if (isZero(sign))
             return null;
         boolean s = sign > 0;

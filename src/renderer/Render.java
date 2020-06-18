@@ -2,6 +2,7 @@ package renderer;
 
 import elements.Camera;
 import geometries.Intersectable;
+import geometries.Intersectable.GeoPoint;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
@@ -38,11 +39,11 @@ public class Render {
         for (int i = 0; i < ny; i++) { //row
             for (int j = 0; j < nx; j++) { //column
                 Ray ray = camera.constructRayThroughPixel(nx, ny, j, i, distance, width, height);
-                List<Point3D> intersectionPoints = geometries.findIntersections(ray);
+                List<GeoPoint> intersectionPoints = geometries.findIntersections(ray);
                 if (intersectionPoints == null) {
                     _imageWriter.writePixel(j, i, background);
                 } else {
-                    Point3D closetPoint = getClosestPoint(intersectionPoints);
+                    GeoPoint closetPoint = getClosestPoint(intersectionPoints);
                     _imageWriter.writePixel(j, i, calcColor(closetPoint).getColor());
                 }
             }
@@ -53,20 +54,22 @@ public class Render {
      * @param p
      * @return
      */
-    private Color calcColor(Point3D p) {
-        return _scene.get_ambientLight().get_intensity();
+    private Color calcColor(GeoPoint p) {
+        Color color = _scene.get_ambientLight().get_intensity();
+        color = color.add(p.getGeometry().get_emission());
+        return color;
     }
 
     /**
-     * @param point3DS list of camera intersection points.
+     * @param geoPoints list of camera intersection points in geo object.
      * @return closet point to camera position
      */
-    public Point3D getClosestPoint(List<Point3D> point3DS) {
-        Point3D pResult = null;
+    public GeoPoint getClosestPoint(List<GeoPoint> geoPoints) {
+        GeoPoint pResult = null;
         double distance = Double.MAX_VALUE;
         Point3D p0 = _scene.get_camera().getP0();
-        for (Point3D partOf : point3DS) {
-            double d = p0.distance(partOf);
+        for (GeoPoint partOf : geoPoints) {
+            double d = p0.distance(partOf.point);
             if (d < distance) {
                 distance = d;
                 pResult = partOf;
