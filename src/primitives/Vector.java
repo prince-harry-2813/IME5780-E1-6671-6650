@@ -52,16 +52,17 @@ public class Vector {
 
     /**
      * Gets a vector and creating new instance of Point 3D
-     * @param other
+     *
+     * @param other object to copy from
      */
     public Vector(Vector other) {
         this.head = new Point3D(other.head);
     }
 
     /**
-     * Substracts two vectors with Point 3D subtract function
-     * @param other
-     * @return
+     * Subtracts two vectors with Point 3D subtract function
+     * @param other to subtract from
+     * @return vector of result of subtract
      */
     public Vector subtract(Vector other) {
         return (this.head.subtract(other.head));
@@ -69,8 +70,8 @@ public class Vector {
 
     /**
      * Adds two vectors Using point 3D add function
-     * @param other
-     * @return
+     * @param other to add tis vector
+     * @return result of adding tow vectors
      */
     public Vector add(Vector other) {
         return new Vector(this.head.add(other));
@@ -79,8 +80,8 @@ public class Vector {
 
     /**
      * Multiplies a vector in scalar (double)
-     * @param scalar
-     * @return New instance of a vector
+     * @param scalar to multiply
+     * @return New instance of a scale vector
      */
     public Vector scale(double scalar) {
         return new Vector(scalar * this.head.getX().get(), scalar * this.head.getY().get(), scalar * this.head.getZ().get());

@@ -24,7 +24,7 @@ public class Cylinder extends Tube {
      *
      * @param radius of cylinder
      * @param h      height of the cylinder
-     * @param axis   point & vector of projection ray
+     * @param axis   point &amp; vector of projection ray
      */
     public Cylinder(double radius, double h, Ray axis) {
         super(radius, axis);
@@ -37,7 +37,7 @@ public class Cylinder extends Tube {
      * @param emission color
      * @param radius   of cylinder
      * @param h        height of the cylinder
-     * @param axis     point & vector of projection ray
+     * @param axis     point &amp; vector of projection ray
      */
     public Cylinder(Color emission, double radius, double h, Ray axis) {
         super(emission, radius, axis);

@@ -50,7 +50,7 @@ public class Camera {
     }
 
     /**
-     * @return vector orthogonal to vTo & vRight
+     * @return vector orthogonal to vTo &amp; vRight
      */
     public Vector getvUp() {
         return vUp;
