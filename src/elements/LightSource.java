@@ -7,5 +7,5 @@ import primitives.Vector;
 public interface LightSource {
     Color getIntensity(Point3D point);
 
-    Vector getL(Vector vector);
+    Vector getL(Point3D point);
 }

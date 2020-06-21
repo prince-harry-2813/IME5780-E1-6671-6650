@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -15,6 +12,14 @@ public class Plane extends Geometry {
     Point3D p;
     Vector normal;
 
+    public Plane(Color emission, Material material, Point3D point, Vector vec) {
+        super(emission, material);
+
+        p = new Point3D(point);
+        normal = new Vector(vec.normalize());
+
+    }
+
     /**
      * ctor of plane by point and vector
      *
@@ -22,7 +27,7 @@ public class Plane extends Geometry {
      * @param vec   Vector of plane
      */
     public Plane(Point3D point, Vector vec) {
-        super();//define emission default color
+        super();//define emission and material to default values
 
         p = new Point3D(point);
         normal = new Vector(vec.normalize());
@@ -36,7 +41,7 @@ public class Plane extends Geometry {
      * @param vec   Vector of plane
      */
     public Plane(Color emission, Point3D point, Vector vec) {
-        super(emission);//define emission default color
+        super(emission);//define emission to params. and material to default
 
         p = new Point3D(point);
         normal = new Vector(vec.normalize());
@@ -51,7 +56,7 @@ public class Plane extends Geometry {
      * @param c Point3D C
      */
     public Plane(Point3D a, Point3D b, Point3D c) {
-        super();//define emission default color
+        super();//define emission and material to default values
         p = new Point3D(a);
         Vector v1 = b.subtract(p);
         Vector v2 = c.subtract(p);
@@ -68,6 +73,14 @@ public class Plane extends Geometry {
      */
     public Plane(Color emission, Point3D a, Point3D b, Point3D c) {
         super(emission);//define emission default color
+        p = new Point3D(a);
+        Vector v1 = b.subtract(p);
+        Vector v2 = c.subtract(p);
+        normal = (v1.crossProduct(v2).normalize());
+    }
+
+    public Plane(Color emission, Material material, Point3D a, Point3D b, Point3D c) {
+        super(emission, material);//define emission default color
         p = new Point3D(a);
         Vector v1 = b.subtract(p);
         Vector v2 = c.subtract(p);

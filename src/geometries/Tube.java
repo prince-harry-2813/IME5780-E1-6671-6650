@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -42,6 +39,11 @@ public class Tube extends RadialGeometry {
         axisRay = new Ray(point, vec);
     }
 
+    public Tube(Color emission, Material material, double radius, Point3D point, Vector vec) {
+        super(emission, material, radius);
+        axisRay = new Ray(point, vec);
+    }
+
     /**
      * ctor that accept radius of tube and ray
      *
@@ -60,6 +62,11 @@ public class Tube extends RadialGeometry {
      */
     public Tube(Color emission, double radius, Ray axisRy) {
         super(emission, radius);
+        this.axisRay = axisRy;
+    }
+
+    public Tube(Color emission, Material material, double radius, Ray axisRy) {
+        super(emission, material, radius);
         this.axisRay = axisRy;
     }
 

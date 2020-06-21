@@ -7,14 +7,8 @@ import primitives.Color;
  */
 abstract class Light {
     protected Color _intensity;
-
-    public Light(Color intensity) {
-        this._intensity = intensity;
-    }
-
     /**
      * getter
-     *
      * @return color of intensity.
      */
     public Color get_intensity() {

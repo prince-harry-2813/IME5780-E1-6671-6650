@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Color;
+import primitives.Material;
 
 import static primitives.Util.isZero;
 
@@ -13,8 +14,8 @@ public abstract class RadialGeometry extends Geometry {
      * @param radius of shape
      */
     public RadialGeometry(double radius) {
-        super();//define emission default color
-        if (isZero(radius) || radius < 0.)
+        super();//define emission and material to default values
+        if (isZero(radius) || radius < 0d)
             throw new IllegalArgumentException("radius is: " + radius + ", it can't be negative");
         this._radius = radius;
     }
@@ -26,8 +27,16 @@ public abstract class RadialGeometry extends Geometry {
      * @param radius   length
      */
     public RadialGeometry(Color emission, double radius) {
-        super(emission); //define emission color
-        if (isZero(radius) || radius < 0.)
+        super(emission); //define emission color and Material to default value
+        if (isZero(radius) || radius < 0d)
+            throw new IllegalArgumentException("radius is: " + radius + ", it can't be negative");
+        this._radius = radius;
+
+    }
+
+    public RadialGeometry(Color emission, Material material, double radius) {
+        super(emission, material); //define emission color and Material by father ctor
+        if (isZero(radius) || radius < 0d)
             throw new IllegalArgumentException("radius is: " + radius + ", it can't be negative");
         this._radius = radius;
 
@@ -39,7 +48,7 @@ public abstract class RadialGeometry extends Geometry {
      * @param other RadialGeometry
      */
     public RadialGeometry(RadialGeometry other) {
-        super(other.get_emission()); //define emission color
+        super(other.get_emission(), other.get_material()); //define emission color
         this._radius = other.get_radius();
     }
 

@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -44,6 +41,11 @@ public class Cylinder extends Tube {
         this.height = h;
     }
 
+    public Cylinder(Color emission, Material material, double radius, double h, Ray axis) {
+        super(emission, material, radius, axis);
+        this.height = h;
+    }
+
     /**
      * ctor that based on father ctor, also accept the height to represent the cylinder.
      *
@@ -68,6 +70,11 @@ public class Cylinder extends Tube {
      */
     public Cylinder(Color emission, double radius, Point3D point, Vector vec, double h) {
         super(emission, radius, point, vec);
+        this.height = h;
+    }
+
+    public Cylinder(Color emission, Material material, double radius, Point3D point, Vector vec, double h) {
+        super(emission, material, radius, point, vec);
         this.height = h;
     }
 

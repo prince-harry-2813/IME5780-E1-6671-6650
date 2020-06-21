@@ -1,6 +1,7 @@
 package geometries;
 
 import primitives.Color;
+import primitives.Material;
 import primitives.Point3D;
 
 public class Triangle extends Polygon {
@@ -26,6 +27,10 @@ public class Triangle extends Polygon {
      */
     public Triangle(Color emission, Point3D a, Point3D b, Point3D c) {
         super(emission, a, b, c);
+    }
+
+    public Triangle(Color emission, Material material, Point3D a, Point3D b, Point3D c) {
+        super(emission, material, a, b, c);
     }
 
     @Override

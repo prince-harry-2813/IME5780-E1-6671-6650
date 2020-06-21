@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -26,9 +23,12 @@ public class Polygon extends Geometry {
      */
     protected Plane _plane;
 
+    public Polygon(Point3D... vertices) {
+        this(new Color(0, 0, 0), new Material(0, 0, 0), vertices);
+    }
+
     public Polygon(Color emission, Point3D... vertices) {
-        this(vertices);
-        this._emission = emission;
+        this(emission, new Material(0, 0, 0), vertices);
     }
 
     /**
@@ -52,8 +52,8 @@ public class Polygon extends Geometry {
      *                                  <li> The polygon is concave (not convex) </li>
      *                                  </ul>
      */
-    public Polygon(Point3D... vertices) {
-        super();//define emission default color
+    public Polygon(Color emission, Material material, Point3D... vertices) {
+        super(emission, material);//define emission default color
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         _vertices = List.of(vertices);
