@@ -1,6 +1,7 @@
 package unittests;
 
 import elements.Camera;
+import geometries.Intersectable.GeoPoint;
 import geometries.Plane;
 import geometries.Sphere;
 import geometries.Triangle;
@@ -24,7 +25,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionSphere1st() {
         Sphere sph = new Sphere(1, new Point3D(0, 0, 3));
-        List<Point3D> results;
+        List<GeoPoint> results;
         int result = 0;
         int Nx = 3; //number of pixel in x line
         int Ny = 3;// number of pixel in y line
@@ -47,7 +48,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionSphere2nd() {
         Sphere sph = new Sphere(2.5, new Point3D(0, 0, 2.5));
-        List<Point3D> results;
+        List<GeoPoint> results;
         int result = 0;
         int Nx = 3;//number of pixel in x line
         int Ny = 3;// number of pixel in y line
@@ -71,7 +72,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionSphere3rd() {
         Sphere sph = new Sphere(2d, new Point3D(0, 0, 2d));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -96,7 +97,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionSphere4th() {
         Sphere sph = new Sphere(4d, new Point3D(0, 0, 2d));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -121,7 +122,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionSphere5th() {
         Sphere sph = new Sphere(2d, new Point3D(0, 0, -5));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -146,7 +147,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionPlane1st() {
         Plane pl = new Plane(new Point3D(0, 0, 6), new Point3D(1, 1, 6), new Point3D(-5, -765, 6));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -171,7 +172,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionPlane2nd() {
         Plane pl = new Plane(new Point3D(0, 0, 5), new Point3D(10, 10, 4), new Point3D(4, 10, 4));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -196,7 +197,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionPlane3rd() {
         Plane pl = new Plane(new Point3D(0, 0, 5), new Point3D(1, 1, 4), new Point3D(4, 10, 3));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -221,7 +222,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionTriangle1st() {
         Triangle tri = new Triangle(new Point3D(0, -1, 2), new Point3D(1, 1, 2), new Point3D(-1, 1, 2));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -245,7 +246,7 @@ public class CameraIntegrationTest {
      */
     @Test
     public void intersectionTriangle2nd() {
-        List<Point3D> results;
+        List<GeoPoint> results;
         Triangle tri = new Triangle(new Point3D(1, 1, 2), new Point3D(-1, 1, 2), new Point3D(0, -20, 2));
         int result = 0;
         int Nx = 3;//number of pixel in x line
@@ -270,7 +271,7 @@ public class CameraIntegrationTest {
     @Test
     public void intersectionTriangle3rd() {
         Triangle tri = new Triangle(new Point3D(0, -10, 2), new Point3D(10, 10, 2), new Point3D(-10, 10, 2));
-        List<Point3D> results;
+        List<GeoPoint> results;
 
         int result = 0;
         int Nx = 3;//number of pixel in x line

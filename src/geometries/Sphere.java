@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -23,7 +21,23 @@ public class Sphere extends RadialGeometry {
      */
     public Sphere(double radius, Point3D _center) {
         super(radius);
-        this.center = _center;
+        this.center = new Point3D(_center);
+    }
+
+    /**
+     * ctor
+     *
+     * @param radius  of the sphere
+     * @param _center point of the sphere
+     */
+    public Sphere(Color emission, double radius, Point3D _center) {
+        super(emission, radius);
+        this.center = new Point3D(_center);
+    }
+
+    public Sphere(Color emission, Material material, double radius, Point3D _center) {
+        super(emission, material, radius);
+        this.center = new Point3D(_center);
     }
 
     @Override
@@ -33,13 +47,13 @@ public class Sphere extends RadialGeometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         Vector u;
         try {
             u = center.subtract(ray.getP0());
         } catch (IllegalArgumentException e) // in case that the ray start at the edge of the sphere
         {
-            return List.of(ray.getPointOnRay(get_radius()));
+            return List.of(new GeoPoint(this, ray.getPointOnRay(get_radius())));
         }
         double tm = alignZero(ray.getDir().dotProduct(u));
         double d;
@@ -54,8 +68,8 @@ public class Sphere extends RadialGeometry {
         double t2 = alignZero(tm + th);
         if (t1 <= 0 && t2 <= 0) return null;
         if (t1 > 0 && t2 > 0)
-            return List.of(ray.getPointOnRay(t1), ray.getPointOnRay(t2));
-        return t1 > 0 ? List.of(ray.getPointOnRay(t1)) : List.of(ray.getPointOnRay(t2));
+            return List.of(new GeoPoint(this, ray.getPointOnRay(t1)), new GeoPoint(this, ray.getPointOnRay(t2)));
+        return t1 > 0 ? List.of(new GeoPoint(this, ray.getPointOnRay(t1))) : List.of(new GeoPoint(this, ray.getPointOnRay(t2)));
 
     }
 }

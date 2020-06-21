@@ -1,18 +1,24 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
-public class Plane implements Geometry {
+public class Plane extends Geometry {
 
     Point3D p;
     Vector normal;
+
+    public Plane(Color emission, Material material, Point3D point, Vector vec) {
+        super(emission, material);
+
+        p = new Point3D(point);
+        normal = new Vector(vec.normalize());
+
+    }
 
     /**
      * ctor of plane by point and vector
@@ -21,8 +27,25 @@ public class Plane implements Geometry {
      * @param vec   Vector of plane
      */
     public Plane(Point3D point, Vector vec) {
+        super();//define emission and material to default values
+
         p = new Point3D(point);
         normal = new Vector(vec.normalize());
+
+    }
+
+    /**
+     * ctor of plane by point and vector
+     *
+     * @param point Point3D
+     * @param vec   Vector of plane
+     */
+    public Plane(Color emission, Point3D point, Vector vec) {
+        super(emission);//define emission to params. and material to default
+
+        p = new Point3D(point);
+        normal = new Vector(vec.normalize());
+
     }
 
     /**
@@ -33,6 +56,31 @@ public class Plane implements Geometry {
      * @param c Point3D C
      */
     public Plane(Point3D a, Point3D b, Point3D c) {
+        super();//define emission and material to default values
+        p = new Point3D(a);
+        Vector v1 = b.subtract(p);
+        Vector v2 = c.subtract(p);
+        normal = (v1.crossProduct(v2).normalize());
+    }
+
+    /**
+     * ctor of plane by three points, calculate the plane normal
+     *
+     * @param emission color
+     * @param a        Point3D A
+     * @param b        Point3D B
+     * @param c        Point3D C
+     */
+    public Plane(Color emission, Point3D a, Point3D b, Point3D c) {
+        super(emission);//define emission default color
+        p = new Point3D(a);
+        Vector v1 = b.subtract(p);
+        Vector v2 = c.subtract(p);
+        normal = (v1.crossProduct(v2).normalize());
+    }
+
+    public Plane(Color emission, Material material, Point3D a, Point3D b, Point3D c) {
+        super(emission, material);//define emission default color
         p = new Point3D(a);
         Vector v1 = b.subtract(p);
         Vector v2 = c.subtract(p);
@@ -60,7 +108,7 @@ public class Plane implements Geometry {
      * @return list of intersection points
      */
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         Vector p_0;
         try {
             p_0 = p.subtract(ray.getP0());
@@ -75,6 +123,6 @@ public class Plane implements Geometry {
 
         if (t <= 0)
             return null;
-        return List.of(ray.getPointOnRay(t));
+        return List.of(new GeoPoint(this, ray.getPointOnRay(t)));
     }
 }
