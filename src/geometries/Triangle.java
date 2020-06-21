@@ -1,11 +1,13 @@
 package geometries;
 
+import primitives.Color;
+import primitives.Material;
 import primitives.Point3D;
 
 public class Triangle extends Polygon {
 
     /**
-     * Triangle ctor Biuld it out of 3 point 3D
+     * Triangle ctor Build it out of 3 point 3D
      *
      * @param a point a
      * @param b point b
@@ -13,6 +15,22 @@ public class Triangle extends Polygon {
      */
     public Triangle(Point3D a, Point3D b, Point3D c) {
         super(a, b, c);
+    }
+
+    /**
+     * Triangle ctor Build it out of 3 point 3D
+     *
+     * @param emission color
+     * @param a        point a
+     * @param b        point b
+     * @param c        point c
+     */
+    public Triangle(Color emission, Point3D a, Point3D b, Point3D c) {
+        super(emission, a, b, c);
+    }
+
+    public Triangle(Color emission, Material material, Point3D a, Point3D b, Point3D c) {
+        super(emission, material, a, b, c);
     }
 
     @Override

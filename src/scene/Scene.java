@@ -3,17 +3,22 @@ package scene;
 
 import elements.AmbientLight;
 import elements.Camera;
+import elements.LightSource;
 import geometries.Geometries;
 import geometries.Intersectable;
 import primitives.Color;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Scene {
-    String _name;
-    Color _background;
-    AmbientLight _ambientLight;
-    Geometries _geometries;
-    Camera _camera;
-    double _distance;
+    private final String _name;
+    private final Geometries _geometries;
+    private Color _background;
+    private AmbientLight _ambientLight;
+    private Camera _camera;
+    private double _distance;
+    private List<LightSource> _lights = new LinkedList<LightSource>();
 
     /**
      * Ctor, accept name only, and crate an empty collection of Geometries.
@@ -124,5 +129,26 @@ public class Scene {
         for (Intersectable partOf : geometries) {
             this._geometries.add(partOf);
         }
+    }
+
+    /**
+     * getter
+     *
+     * @return list of light objects
+     */
+    public List<LightSource> get_lights() {
+        return _lights;
+    }
+
+    /**
+     * add method to list of light object
+     *
+     * @param light light source list
+     */
+    public void addLights(LightSource light) {
+        if (_lights == null) {
+            _lights = new LinkedList<>();
+        }
+        _lights.add(light);
     }
 }

@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Tube extends RadialGeometry {
     protected final Ray axisRay;
 
     /**
-     * Ctor uses Ray stor and assigning it into Ray
+     * Ctor uses Ray ctor and assigning it into Ray
      *
      * @param radius of tube
      * @param point  of tube
@@ -28,8 +26,47 @@ public class Tube extends RadialGeometry {
         axisRay = new Ray(point, vec);
     }
 
+    /**
+     * Ctor uses Ray ctor and assigning it into Ray and accept emission color
+     *
+     * @param emission color
+     * @param radius   of tube
+     * @param point    of tube
+     * @param vec      direction of tube
+     */
+    public Tube(Color emission, double radius, Point3D point, Vector vec) {
+        super(emission, radius);
+        axisRay = new Ray(point, vec);
+    }
+
+    public Tube(Color emission, Material material, double radius, Point3D point, Vector vec) {
+        super(emission, material, radius);
+        axisRay = new Ray(point, vec);
+    }
+
+    /**
+     * ctor that accept radius of tube and ray
+     *
+     * @param radius of tube
+     * @param axisRy of tube
+     */
     public Tube(double radius, Ray axisRy) {
         super(radius);
+        this.axisRay = axisRy;
+    }
+
+    /**
+     * @param emission color of tube
+     * @param radius   of tube
+     * @param axisRy   of tube
+     */
+    public Tube(Color emission, double radius, Ray axisRy) {
+        super(emission, radius);
+        this.axisRay = axisRy;
+    }
+
+    public Tube(Color emission, Material material, double radius, Ray axisRy) {
+        super(emission, material, radius);
         this.axisRay = axisRy;
     }
 
@@ -58,7 +95,7 @@ public class Tube extends RadialGeometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findIntersections(Ray ray) {
         return null;
     }
 }

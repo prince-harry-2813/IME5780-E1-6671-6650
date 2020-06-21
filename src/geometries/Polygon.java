@@ -1,8 +1,6 @@
 package geometries;
 
-import primitives.Point3D;
-import primitives.Ray;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -15,7 +13,7 @@ import static primitives.Util.isZero;
  *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -24,6 +22,14 @@ public class Polygon implements Geometry {
      * Associated plane in which the polygon lays
      */
     protected Plane _plane;
+
+    public Polygon(Point3D... vertices) {
+        this(new Color(0, 0, 0), new Material(0, 0, 0), vertices);
+    }
+
+    public Polygon(Color emission, Point3D... vertices) {
+        this(emission, new Material(0, 0, 0), vertices);
+    }
 
     /**
      * Polygon constructor based on vertices list. The list must be ordered by edge
@@ -46,7 +52,8 @@ public class Polygon implements Geometry {
      *                                  <li> The polygon is concave (not convex) </li>
      *                                  </ul>
      */
-    public Polygon(Point3D... vertices) {
+    public Polygon(Color emission, Material material, Point3D... vertices) {
+        super(emission, material);//define emission default color
         if (vertices.length < 3)
             throw new IllegalArgumentException("A polygon can't have less than 3 vertices");
         _vertices = List.of(vertices);
@@ -91,17 +98,17 @@ public class Polygon implements Geometry {
     }
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        List<Point3D> list = _plane.findIntersections(ray);
+    public List<GeoPoint> findIntersections(Ray ray) {
+        List<GeoPoint> list = _plane.findIntersections(ray);
         if (list == null)
             return null;
         Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
         Vector v1 = _vertices.get(1).subtract(p0);
         Vector v2 = _vertices.get(0).subtract(p0);
-        double sign = v.dotProduct(v1.crossProduct(v2)
-                .normalized()
-        );
+
+        double sign = v.dotProduct(v1.crossProduct(v2).normalized());
+
         if (isZero(sign))
             return null;
         boolean s = sign > 0;
