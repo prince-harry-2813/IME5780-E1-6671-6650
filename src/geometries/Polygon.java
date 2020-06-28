@@ -2,6 +2,7 @@ package geometries;
 
 import primitives.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import static primitives.Util.alignZero;
@@ -122,6 +123,10 @@ public class Polygon extends Geometry {
             if (isZero(sign)) return null;
             if (s != (sign > 0)) return null;
         }
-        return list;
+        List<GeoPoint> result = new LinkedList<>();
+        for (GeoPoint geo : list) {
+            result.add(new GeoPoint(this, geo.getPoint()));
+        }
+        return result;
     }
 }

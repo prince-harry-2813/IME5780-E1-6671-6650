@@ -23,4 +23,16 @@ public class Material {
     public Material(Material material) {
         this(material._kD, material.kS, material._nShininess);
     }
+
+    public int get_nShininess() {
+        return _nShininess;
+    }
+
+    public double get_kD() {
+        return _kD;
+    }
+
+    public double getkS() {
+        return kS;
+    }
 }

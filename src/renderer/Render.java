@@ -1,11 +1,10 @@
 package renderer;
 
 import elements.Camera;
+import elements.LightSource;
 import geometries.Intersectable;
 import geometries.Intersectable.GeoPoint;
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
+import primitives.*;
 import scene.Scene;
 
 import java.util.List;
@@ -50,6 +49,10 @@ public class Render {
         }
     }
 
+    private boolean sign(double x) {
+        return (x > 0d);
+    }
+
     /**
      * @param p
      * @return
@@ -57,6 +60,18 @@ public class Render {
     private Color calcColor(GeoPoint p) {
         Color color = _scene.get_ambientLight().get_intensity();
         color = color.add(p.getGeometry().get_emission());
+        Vector v = p.point.subtract(_scene.get_camera().getP0()).normalize();
+        Vector n = p.geometry.getNormal(p.point);
+        Material material = p.geometry.get_material();
+        int nShininess = material.get_nShininess();
+        double kd = material.get_kD(), ks = material.getkS();
+        for (LightSource lightS : _scene.get_lights()) {
+            Vector l = lightS.getL(p.point);
+            if (sign(n.dotProduct(l)) == sign(n.dotProduct(v))) {
+                Color lightIntensity = lightS.getIntensity(p.point);
+            }
+
+        }
         return color;
     }
 
