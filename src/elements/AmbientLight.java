@@ -12,7 +12,7 @@ public class AmbientLight extends Light {
      * @param ka scale param
      */
     public AmbientLight(Color ia, double ka) {
-        this._intensity = ia.scale(ka);
+        super(ia.scale(ka));
     }
 
     /**
