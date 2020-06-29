@@ -14,12 +14,12 @@ public class DirectionalLight extends Light implements LightSource {
     }
 
     public Vector get_direction() {
-        return _direction;
+        return this._direction;
     }
 
     @Override
     public Color getIntensity(Point3D point) {
-        return super.get_intensity();
+        return this._intensity;
     }
 
     @Override

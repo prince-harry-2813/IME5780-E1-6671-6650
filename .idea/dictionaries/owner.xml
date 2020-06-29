@@ -4,6 +4,7 @@
       <w>coord</w>
       <w>ctor</w>
       <w>intersectable</w>
+      <w>phong</w>
     </words>
   </dictionary>
 </component>

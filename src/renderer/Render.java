@@ -9,6 +9,8 @@ import scene.Scene;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
+
 public class Render {
     ImageWriter _imageWriter;
     Scene _scene;
@@ -54,25 +56,60 @@ public class Render {
     }
 
     /**
-     * @param p
-     * @return
+     * @param p point on geometry object
+     * @return Ip the color of pixel that return by light reflection and Phong reflection model
      */
     private Color calcColor(GeoPoint p) {
-        Color color = _scene.get_ambientLight().get_intensity();
-        color = color.add(p.getGeometry().get_emission());
+        Color color = _scene.get_ambientLight().get_intensity(); // Ka * Ia
+        color = color.add(p.getGeometry().get_emission()); //  + Ie
         Vector v = p.point.subtract(_scene.get_camera().getP0()).normalize();
         Vector n = p.geometry.getNormal(p.point);
         Material material = p.geometry.get_material();
-        int nShininess = material.get_nShininess();
-        double kd = material.get_kD(), ks = material.getkS();
-        for (LightSource lightS : _scene.get_lights()) {
-            Vector l = lightS.getL(p.point);
-            if (sign(n.dotProduct(l)) == sign(n.dotProduct(v))) {
-                Color lightIntensity = lightS.getIntensity(p.point);
-            }
+        if (material != null) {
+            int nShininess = material.get_nShininess();
+            double kd = material.get_kD(), ks = material.getkS();
 
+            if (_scene.get_lights() != null) {
+                for (LightSource lightS : _scene.get_lights()) {
+                    Vector l = lightS.getL(p.point);
+                    double nl = alignZero(n.dotProduct(l)), nv = alignZero(n.dotProduct(v));
+                    if (sign(nl) == sign(nv)) {
+                        Color lightIntensity = lightS.getIntensity(p.getPoint());
+                        color = color.add(calcDiffusive(kd, nl, lightIntensity), calcSpecular(ks, l, n, nl, v, nShininess, lightIntensity));
+
+                    }
+                }
+            }
         }
         return color;
+    }
+
+    /**
+     * @param kd diffusive component
+     * @param nl cos -> n dot product l
+     * @param ip color intensity of reflection
+     * @return diffused color light reflection
+     */
+    private Color calcDiffusive(double kd, double nl, Color ip) {
+        nl = Math.abs(nl);
+        return ip.scale(nl * kd);
+    }
+
+    /**
+     * @param ks         specular component
+     * @param l          direction of light to point on object
+     * @param n          normal to object surface
+     * @param nl         cos -> n dot product l
+     * @param v          direction from camera point to object point
+     * @param nShininess shininess level
+     * @param ip         color intensity of reflection
+     * @return specular color light reflection
+     */
+    private Color calcSpecular(double ks, Vector l, Vector n, double nl, Vector v, int nShininess, Color ip) {
+        Vector R = l.add(n.scale(-2 * nl));
+        double oppositeVR = -alignZero(R.dotProduct(v));
+        if (oppositeVR <= 0) return Color.BLACK;
+        return ip.scale(ks * Math.pow(oppositeVR, nShininess));
     }
 
     /**
