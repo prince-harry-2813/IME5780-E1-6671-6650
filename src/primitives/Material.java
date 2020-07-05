@@ -5,9 +5,9 @@ public class Material {
     int _nShininess;
 
     /**
-     * @param kd
-     * @param ks
-     * @param nShininess
+     * @param kd         diffusive factor component
+     * @param ks         specular factor component
+     * @param nShininess shininess factor component
      */
     public Material(double kd, double ks, int nShininess) {
         this._kD = kd;
@@ -24,15 +24,30 @@ public class Material {
         this(material._kD, material.kS, material._nShininess);
     }
 
+    /**
+     * getter
+     *
+     * @return shininess factor component
+     */
     public int get_nShininess() {
         return _nShininess;
     }
 
+    /**
+     * getter
+     *
+     * @return diffusive factor component
+     */
     public double get_kD() {
         return _kD;
     }
 
-    public double getkS() {
+    /**
+     * getter
+     *
+     * @return specular factor component
+     */
+    public double get_kS() {
         return kS;
     }
 }

@@ -67,7 +67,7 @@ public class Render {
         Material material = p.geometry.get_material();
         if (material != null) {
             int nShininess = material.get_nShininess();
-            double kd = material.get_kD(), ks = material.getkS();
+            double kd = material.get_kD(), ks = material.get_kS();
 
             if (_scene.get_lights() != null) {
                 for (LightSource lightS : _scene.get_lights()) {

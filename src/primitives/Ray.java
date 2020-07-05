@@ -52,8 +52,8 @@ public class Ray {
     /**
      * Checks two instance of Ray if their properties are equal
      *
-     * @param obj
-     * @return A boolian veraible
+     * @param obj other object to compere
+     * @return A boolean variable
      */
     @Override
     public boolean equals(Object obj) {
