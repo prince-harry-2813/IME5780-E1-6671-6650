@@ -27,10 +27,10 @@ public class ShadowTest {
     @Test
     public void SphereTriangleInitial() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(Color.BLACK, 0));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(Color.BLACK, 0));
 
         scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
                         60, new Point3D(0, 0, 200)), //
@@ -53,10 +53,10 @@ public class ShadowTest {
     @Test
     public void SphereTriangleMove1() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(Color.BLACK, 0));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(Color.BLACK, 0));
 
         scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
                         60, new Point3D(0, 0, 200)), //
@@ -79,10 +79,10 @@ public class ShadowTest {
     @Test
     public void SphereTriangleMove2() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(Color.BLACK, 0));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(Color.BLACK, 0));
 
         scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
                         60, new Point3D(0, 0, 200)), //
@@ -105,10 +105,10 @@ public class ShadowTest {
     @Test
     public void SphereTriangleSpot1() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(Color.BLACK, 0));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(Color.BLACK, 0));
 
         scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
                         60, new Point3D(0, 0, 200)), //
@@ -131,10 +131,10 @@ public class ShadowTest {
     @Test
     public void SphereTriangleSpot2() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(Color.BLACK, 0));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(Color.BLACK, 0));
 
         scene.addGeometries(new Sphere(new Color(java.awt.Color.BLUE), new Material(0.5, 0.5, 30), //
                         60, new Point3D(0, 0, 200)), //
@@ -157,10 +157,10 @@ public class ShadowTest {
     @Test
     public void trianglesSphere() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(1000);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
 
         scene.addGeometries( //
                 new Triangle(Color.BLACK, new Material(0, 0.8, 60), //

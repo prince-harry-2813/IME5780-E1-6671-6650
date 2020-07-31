@@ -50,12 +50,12 @@ public class Render {
      * combine the scene in the image
      */
     public void renderImage() {
-        Camera camera = _scene.get_camera();
+        Camera camera = _scene.get_Camera();
         Intersectable geometries = _scene.get_geometries();
-        java.awt.Color background = _scene.get_background().getColor();
+        java.awt.Color background = _scene.get_Background().getColor();
         int nx = _imageWriter.getNx();
         int ny = _imageWriter.getNy();
-        double distance = _scene.get_distance(), width = _imageWriter.getWidth(), height = _imageWriter.getHeight();
+        double distance = _scene.get_Distance(), width = _imageWriter.getWidth(), height = _imageWriter.getHeight();
 
         for (int i = 0; i < ny; i++) { //row
             for (int j = 0; j < nx; j++) { //column
@@ -80,9 +80,9 @@ public class Render {
      * @return Ip the color of pixel that return by light reflection and Phong reflection model
      */
     private Color calcColor(GeoPoint p) {
-        Color color = _scene.get_ambientLight().get_intensity(); // Ka * Ia
+        Color color = _scene.get_AmbientLight().get_intensity(); // Ka * Ia
         color = color.add(p.getGeometry().get_emission()); //  + Ie
-        Vector v = p.point.subtract(_scene.get_camera().getP0()).normalize();
+        Vector v = p.point.subtract(_scene.get_Camera().getP0()).normalize();
         Vector n = p.geometry.getNormal(p.point);
         Material material = p.geometry.get_material();
         if (material != null) {
@@ -140,7 +140,7 @@ public class Render {
     public GeoPoint getClosestPoint(List<GeoPoint> geoPoints) {
         GeoPoint pResult = null;
         double distance = Double.MAX_VALUE;
-        Point3D p0 = _scene.get_camera().getP0();
+        Point3D p0 = _scene.get_Camera().getP0();
         for (GeoPoint partOf : geoPoints) {
             double d = p0.distance(partOf.point);
             if (d < distance) {
