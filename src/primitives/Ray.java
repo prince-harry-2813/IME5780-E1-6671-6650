@@ -8,6 +8,20 @@ import static primitives.Util.isZero;
 public class Ray {
     Point3D p0;
     Vector dir;
+    private static final double DELTA = 0.1;
+
+    /**
+     * ctor of secondary Ray: the head = p0 + normal.scale(DELTA * sign)
+     * @param p0 head of the ray
+     * @param direction direction of the ray
+     * @param normal normal to ray end point
+     */
+    public Ray(Point3D p0, Vector direction, Vector normal) {
+        dir = new Vector(direction).normalized();
+        double nv = normal.dotProduct(direction);
+        Vector delta = normal.scale(nv > 0 ? DELTA : -DELTA);//according to the sign of Normal DP Direction
+        this.p0 = p0.add(delta);
+    }
 
     /**
      * Ctor of A Ray
@@ -18,12 +32,15 @@ public class Ray {
      */
     public Ray(Point3D po, Vector vec) {
         this.p0 = new Point3D(po);
-        this.dir = new Vector(vec.normalize());
+        this.dir = new Vector(vec.normalized());
     }
 
+    /**
+     * copy Ctor
+     * @param oth other Ray
+     */
     public Ray(Ray oth) {
-        this.p0 = new Point3D(oth.getP0());
-        this.dir = new Vector(oth.getDir().normalize());
+        this(oth.getP0(), oth.getDir());
     }
 
     /**

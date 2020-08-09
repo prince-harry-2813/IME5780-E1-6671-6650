@@ -12,9 +12,7 @@ public class Material {
      * @param nShininess shininess factor component
      */
     public Material(double kd, double ks, int nShininess) {
-        this._kD = kd;
-        this._kS = ks;
-        this._nShininess = nShininess;
+        this(kd, ks, nShininess, 0, 0);
     }
 
     /**
@@ -27,10 +25,11 @@ public class Material {
      * @param kr         reflection factor component
      */
     public Material(double kd, double ks, int nShininess, double kt, double kr) {
-        this(kd, ks, nShininess);
+        this._kD = kd;
+        this._kS = ks;
+        this._nShininess = nShininess;
         this._kT = kt;
         this._kR = kr;
-        this._kS = ks;
     }
 
     /**
@@ -39,7 +38,8 @@ public class Material {
      * @param material object to copy from
      */
     public Material(Material material) {
-        this(material._kD, material._kS, material._nShininess);
+
+        this(material._kD, material._kS, material._nShininess, material._kT, material._kR);
     }
 
     /**

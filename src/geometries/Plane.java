@@ -37,8 +37,9 @@ public class Plane extends Geometry {
     /**
      * ctor of plane by point and vector
      *
-     * @param point Point3D
-     * @param vec   Vector of plane
+     * @param point    Point3D
+     * @param vec      Vector of plane
+     * @param emission color of plane
      */
     public Plane(Color emission, Point3D point, Vector vec) {
         super(emission);//define emission to params. and material to default

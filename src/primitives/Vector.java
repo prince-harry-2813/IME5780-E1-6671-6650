@@ -44,7 +44,6 @@ public class Vector {
      * @param x axis
      * @param y axis
      * @param z axis
-     * @throws IllegalArgumentException
      */
     public Vector(double x, double y, double z) throws IllegalArgumentException {
         this.head = new Point3D(x, y, z);
