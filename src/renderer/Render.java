@@ -2,7 +2,6 @@ package renderer;
 
 import elements.Camera;
 import elements.LightSource;
-import geometries.Intersectable;
 import geometries.Intersectable.GeoPoint;
 import primitives.*;
 import scene.Scene;
@@ -15,7 +14,7 @@ public class Render {
     /**
      *
      */
-    private static final int MAX_CALC_COLOR_LEVEL = 10;
+    private static final int MAX_CALC_COLOR_LEVEL = 40;
     /**
      * MIN value if it reach below this stop calculate reflection cause it add 0 to color
      */
@@ -59,7 +58,7 @@ public class Render {
      */
     public void renderImage() {
         Camera camera = _scene.get_Camera();
-        Intersectable geometries = _scene.get_geometries();
+       // Intersectable geometries = _scene.get_geometries();
         java.awt.Color background = _scene.get_Background().getColor();
         int nx = _imageWriter.getNx();
         int ny = _imageWriter.getNy();
@@ -78,8 +77,8 @@ public class Render {
     }
 
     /**
-     * @param x
-     * @return
+     * @param x a number
+     * @return is a positive number or not
      */
     private boolean sign(double x) {
         return (x > 0d);
@@ -108,13 +107,14 @@ public class Render {
      * @param point  of intersection by first ray on object
      * @param raySt  first ray that intersect object
      * @param normal to object at point
-     * @return
+     * @return new ray that refracted in object
      */
     private Ray constructRefractedRay(Point3D point, Ray raySt, Vector normal) {
         return new Ray(point, raySt.getDir(), normal);
     }
 
     /**
+     * belong to old levels of the project
      * @param p point on geometry object
      * @return Ip the color of pixel that return by light reflection and Phong reflection model
      */
@@ -147,16 +147,16 @@ public class Render {
     /**
      * adding color to image by the light sources.
      *
-     * @param gp         geo
-     * @param result
-     * @param k
-     * @param v
-     * @param n
-     * @param nv
-     * @param nShininess
-     * @param kd
-     * @param ks
-     * @return
+     * @param gp geo object at specific point
+     * @param result color of pixel
+     * @param k transparency and reflection param level
+     * @param v vector direction from camera to geo object
+     * @param n normal to geo
+     * @param nv dot product of normal to camera direction
+     * @param nShininess shininess level
+     * @param kd diffusive component
+     * @param ks specular component
+     * @return Color of pixel result after calculating the light influences on object
      */
     private Color calcColorByLightSources(GeoPoint gp, Color result, double k, Vector v, Vector n, double nv, int nShininess, double kd, double ks) {
         if (_scene.get_lights() != null) {
