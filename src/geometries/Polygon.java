@@ -37,6 +37,8 @@ public class Polygon extends Geometry {
      * path. The polygon must be convex.
      *
      * @param vertices list of vertices according to their order by edge path
+     * @param emission color of polygon
+     * @param material of polygon
      * @throws IllegalArgumentException in any case of illegal combination of
      *                                  vertices:
      *                                  <ul>

@@ -19,6 +19,10 @@ public class PointLight extends Light implements LightSource {
         this._kQ = kQ;
     }
 
+    public PointLight(Color intensity, Point3D position) {
+        this(intensity, position, 1d, 0d, 0d);
+    }
+
     public double get_kC() {
         return _kC;
     }
@@ -41,6 +45,11 @@ public class PointLight extends Light implements LightSource {
         double distanceSQRD = _position.distanceSquared(point);
         double distance = _position.distance(point);
         return _intensity.reduce(_kC + _kL * distance + _kQ * distanceSQRD);
+    }
+
+    @Override
+    public double getDistance(Point3D geoPoint) {
+        return _position.distance(geoPoint);
     }
 
     @Override

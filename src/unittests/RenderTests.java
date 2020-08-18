@@ -26,10 +26,10 @@ public class RenderTests {
     @Test
     public void basicRenderTwoColorTest() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(100);
-        scene.set_background(new Color(75, 127, 90));
-        scene.set_ambientLight(new AmbientLight(new Color(255, 191, 191), 1));
+        scene.set_Camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(100);
+        scene.set_Background(new Color(75, 127, 90));
+        scene.set_AmbientLight(new AmbientLight(new Color(255, 191, 191), 1));
 
         scene.addGeometries(new Sphere(50, new Point3D(0, 0, 100)));
 
@@ -50,10 +50,10 @@ public class RenderTests {
     @Test
     public void RenderTest() {
         Scene scene = new Scene("test 2nd");
-        scene.set_camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(100);
-        scene.set_background(new Color(0, 0, 255));
-        scene.set_ambientLight(new AmbientLight(new Color(255, 255, 0), 1));
+        scene.set_Camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(100);
+        scene.set_Background(new Color(0, 0, 255));
+        scene.set_AmbientLight(new AmbientLight(new Color(255, 255, 0), 1));
         scene.addGeometries(new Sphere(44, new Point3D(0, 0, 200)));
         ImageWriter imageWriter = new ImageWriter("render test 2nd", 500, 500, 500, 500);
         Render render = new Render(imageWriter, scene);
@@ -65,10 +65,10 @@ public class RenderTests {
     @Test
     public void basicRenderMultiColorTest() {
         Scene scene = new Scene("Test scene");
-        scene.set_camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
-        scene.set_distance(100);
-        scene.set_background(Color.BLACK);
-        scene.set_ambientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.2));
+        scene.set_Camera(new Camera(Point3D.ZERO, new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(100);
+        scene.set_Background(Color.BLACK);
+        scene.set_AmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.2));
 
         scene.addGeometries(new Sphere(50, new Point3D(0, 0, 100)));
 

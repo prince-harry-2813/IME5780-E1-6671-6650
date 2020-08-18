@@ -27,8 +27,9 @@ public class Sphere extends RadialGeometry {
     /**
      * ctor
      *
-     * @param radius  of the sphere
-     * @param _center point of the sphere
+     * @param radius   of the sphere
+     * @param _center  point of the sphere
+     * @param emission color of sphere
      */
     public Sphere(Color emission, double radius, Point3D _center) {
         super(emission, radius);

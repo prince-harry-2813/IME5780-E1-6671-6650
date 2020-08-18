@@ -1,3 +1,4 @@
+
 package scene;
 
 
@@ -35,7 +36,7 @@ public class Scene {
      *
      * @return AmbientLight object of ambient light in scene
      */
-    public AmbientLight get_ambientLight() {
+    public AmbientLight get_AmbientLight() {
         return _ambientLight;
     }
 
@@ -44,7 +45,7 @@ public class Scene {
      *
      * @param _ambientLight = ambient light
      */
-    public void set_ambientLight(AmbientLight _ambientLight) {
+    public void set_AmbientLight(AmbientLight _ambientLight) {
         this._ambientLight = _ambientLight;
     }
 
@@ -53,7 +54,7 @@ public class Scene {
      *
      * @return camera object of scene
      */
-    public Camera get_camera() {
+    public Camera get_Camera() {
         return _camera;
     }
 
@@ -62,7 +63,7 @@ public class Scene {
      *
      * @param _camera = camera object in scene
      */
-    public void set_camera(Camera _camera) {
+    public void set_Camera(Camera _camera) {
         this._camera = _camera;
     }
 
@@ -71,7 +72,7 @@ public class Scene {
      *
      * @return Color object of background in scene
      */
-    public Color get_background() {
+    public Color get_Background() {
         return _background;
     }
 
@@ -80,7 +81,7 @@ public class Scene {
      *
      * @param _background = background Color in scene
      */
-    public void set_background(Color _background) {
+    public void set_Background(Color _background) {
         this._background = _background;
     }
 
@@ -89,7 +90,7 @@ public class Scene {
      *
      * @return the distance between camera to view plane
      */
-    public double get_distance() {
+    public double get_Distance() {
         return _distance;
     }
 
@@ -98,7 +99,7 @@ public class Scene {
      *
      * @param _distance = update method to distance between camera and the view plane
      */
-    public void set_distance(double _distance) {
+    public void set_Distance(double _distance) {
         this._distance = _distance;
     }
 
@@ -109,6 +110,7 @@ public class Scene {
      */
     public Geometries get_geometries() {
         return _geometries;
+
     }
 
     /**

@@ -60,7 +60,7 @@ public abstract class Geometry implements Intersectable {
     }
 
     /**
-     * @return
+     * @return material of object
      */
     public Material get_material() {
         return _material;
