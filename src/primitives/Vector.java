@@ -15,7 +15,7 @@ public class Vector {
      * And checks if the vector is equal to ZERO then throwing an exception
      *
      * @param in the copied class.
-     * @throws IllegalArgumentException
+     * @throws IllegalArgumentException ZERO Vector
      */
     public Vector(Point3D in) throws IllegalArgumentException {
         this.head = new Point3D(in);
@@ -26,10 +26,11 @@ public class Vector {
      * Ctor of vector
      * Gets 3 Coordinates and calls to point 3D ctor
      * And checks if the vector is equal to ZERO then throwing an exception
-     * @param x
-     * @param y
-     * @param z
-     * @throws IllegalArgumentException
+     *
+     * @param x axis
+     * @param y axis
+     * @param z axis
+     * @throws IllegalArgumentException ZERO Vector
      */
     public Vector(Coordinate x, Coordinate y, Coordinate z) throws IllegalArgumentException {
         this.head = new Point3D(x, y, z);
@@ -40,10 +41,9 @@ public class Vector {
      * Ctor of vector
      * Gets 3 numbers and calls to point 3D ctor
      * And checks if the vector is equal to ZERO then throwing an exception
-     * @param x
-     * @param y
-     * @param z
-     * @throws IllegalArgumentException
+     * @param x axis
+     * @param y axis
+     * @param z axis
      */
     public Vector(double x, double y, double z) throws IllegalArgumentException {
         this.head = new Point3D(x, y, z);
@@ -153,8 +153,8 @@ public class Vector {
     }
 
     /**
-     * Ovverride Point 3D to string
-     * @param obj
+     * Override Point 3D to string
+     * @param obj other object to compere
      * @return Vector to string
      */
     @Override
