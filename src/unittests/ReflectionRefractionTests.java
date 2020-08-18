@@ -6,6 +6,7 @@ package unittests;
 import elements.AmbientLight;
 import elements.Camera;
 import elements.SpotLight;
+import geometries.Polygon;
 import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.Test;
@@ -105,6 +106,51 @@ public class ReflectionRefractionTests {
                 new Point3D(60, -50, 0), new Vector(0, 0, 1), 1, 4E-5, 2E-7));
 
         ImageWriter imageWriter = new ImageWriter("shadow with transparency", 200, 200, 600, 600);
+        Render render = new Render(imageWriter, scene);
+
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test
+
+    public void allefectTest10sheapBounos() {
+        Scene scene = new Scene("Test scene");
+        scene.set_Camera(new Camera(new Point3D(0, 0, -1000), new Vector(0, 0, 1), new Vector(0, -1, 0)));
+        scene.set_Distance(1000);
+        scene.set_Background(new Color(20, 20, 200));
+        scene.set_AmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
+
+        scene.addGeometries( //
+                new Triangle(Color.BLACK, new Material(0.5, 0.5, 60), //
+                        new Point3D(-55, 10, 130), new Point3D(-30, 49, 115), new Point3D(-80, 49, 115)), //
+                new Sphere(new Color(200, 200, 0), new Material(0.5, 0.5, 2, 0, 0), // sun
+                        50, new Point3D(70, -70, 0)),
+                new Sphere(new Color(java.awt.Color.orange), new Material(0.2, 0.2, 70, 0.5, 0.8), // inside sun1
+                        30, new Point3D(70, -70, -10)),
+                new Sphere(new Color(java.awt.Color.RED), new Material(0.2, 0.2, 50, 0.9, 0), // inside sun2
+                        20, new Point3D(70, -70, -30)),
+
+                new Sphere(new Color(java.awt.Color.gray), new Material(0.2, 0.2, 25, 0.0, 0), //cloude
+                        20, new Point3D(-70, -60, -30)),
+                new Sphere(new Color(java.awt.Color.gray), new Material(0.2, 0.2, 25, 0.0, 0), //cloude
+                        20, new Point3D(-60, -50, -30)),
+                new Sphere(new Color(java.awt.Color.gray), new Material(0.2, 0.2, 25, 0.0, 0), //cloude
+                        20, new Point3D(-40, -65, -30)),
+
+                new Polygon(new Color(17, 11, 5), new Material(1, 0.25, 5, 0.3, 0),
+                        new Point3D(25, 110, 115), new Point3D(35, 110, 115), new Point3D(35, 50, 115), new Point3D(25, 50, 115)),
+
+                new Triangle(new Color(0, 150, 0), new Material(0.5, 0.5, 60), //
+                        new Point3D(30, -20, 130), new Point3D(15, 50, 115), new Point3D(45, 50, 115)), //
+                new Polygon(new Color(java.awt.Color.red), new Material(1, 0.25, 5, 0.3, 0),
+                        new Point3D(-80, 110, 115), new Point3D(-30, 110, 115), new Point3D(-30, 50, 115), new Point3D(-80, 50, 115)));
+
+
+        scene.addLights(new SpotLight(new Color(100, 100, 100), //
+                new Point3D(1, 1, -750), new Vector(0, 0, 1), 1, 4E-5, 2E-7));
+
+        ImageWriter imageWriter = new ImageWriter("house of the rising sun", 200, 200, 600, 600);
         Render render = new Render(imageWriter, scene);
 
         render.renderImage();
