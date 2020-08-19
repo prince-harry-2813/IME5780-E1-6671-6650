@@ -25,6 +25,8 @@ public class Render {
     private static final double DELTA = 0.1;
     ImageWriter _imageWriter;
     Scene _scene;
+    int numOfRays;
+    double compactness;
 
     /**
      * Ctor for render accept scene to compile the objects init the image by image writer
@@ -35,6 +37,12 @@ public class Render {
     public Render(ImageWriter imageWriter, Scene scene) {
         this._imageWriter = imageWriter;
         this._scene = scene;
+    }
+
+    public Render(ImageWriter imageWriter, Scene scene, int numOfRays, double compactness) {
+        this(imageWriter, scene);
+        this.numOfRays = numOfRays;
+        this.compactness = compactness;
     }
 
     private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint gp) {
@@ -216,7 +224,7 @@ public class Render {
         if (nv == 0)
             return color;
         color = color.add(calcColorByLightSources(geoPoint, color, k, v, n, nv, geoPoint.getGeometry().get_material().get_nShininess(), geoPoint.geometry.get_material().get_kD(), geoPoint.getGeometry().get_material().get_kS()));
-        if (level == 1 || k < MIN_CALC_COLOR_K) return Color.BLACK; // stop condition
+        if (level == 1 || k < MIN_CALC_COLOR_K) return color; // stop condition
 
         double kr = geoPoint.geometry.get_material().get_kR(), kkr = k * kr;
         if (kkr > MIN_CALC_COLOR_K) {
