@@ -25,7 +25,7 @@ public class Ray {
 
     /**
      * Ctor of A Ray
-     * Gets a point 3D and THe vector that the point start the Ray from
+     * Gets a point 3D and The vector that the point start the Ray from
      *
      * @param po  point of ray
      * @param vec vector of ray
